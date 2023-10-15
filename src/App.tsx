@@ -22,6 +22,8 @@ import { ProfilePage2 }   from "./screens/ProfilePage2";
 //เมื่อไรจะเสร็จจจจจ HI
 
 //Project
+// hello word
+
 
 const App: React.FC = () => {
   return (

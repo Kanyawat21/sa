@@ -187,7 +187,6 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 				return
 		
 			}
-			//-----------------------------------------------
 
 			if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
 				c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
@@ -215,6 +214,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			// }
 		
 			u := entity.Service{
+
 				Member: service.Member,
 				Accomodation: accommodation,
 				Hour_of_work: hour_of_work,

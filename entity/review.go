@@ -7,6 +7,8 @@ type Review struct {
 	Rate   int
 	Detail string
 
+	MemberID *uint
+	Member   Member `gorm:"foreignKey:MemberID"`
 	// ServiceID *uint
 	// Service Service `gorm:"foreignKey:ServiceID"`
 }

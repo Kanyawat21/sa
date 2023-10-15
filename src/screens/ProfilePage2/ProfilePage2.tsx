@@ -36,8 +36,6 @@ export const ProfilePage2 = (): JSX.Element => {
           <div className="boxaddress">
             <textarea readOnly value={member.map((member) => member.Address)}></textarea>
           </div>
-          <Buttonn buttonTextClassName="button-2" className="button-instance" text="Save change" />
-         
           <div className="text-wrapper-9">Edit profile picture</div>
 
           <img

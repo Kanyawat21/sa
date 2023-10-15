@@ -19,6 +19,8 @@ import { ProfilePage2 }   from "./screens/ProfilePage2";
 
 //HELLO World โปรเจคโง่ๆ  ทำไมคะ?
 
+//เมื่อไรจะเสร็จจจจจ
+
 const App: React.FC = () => {
   return (
     <Router>

@@ -111,7 +111,46 @@ async function GetMemberById(id: Number){
         });
       return res;
 }
-
+async function GetUserName(username: string) {
+    console.log("Data sent to GetUsername:", username);
+    const requestOptions = {
+      method: "GET",
+      headers: {
+      "Content-Type": "application/json",
+      },
+      };
+    let res = await fetch(`${apiUrl}/username/${username}`, requestOptions)
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.data) {
+            return { status: true, message: res.data };
+            } else {
+            return { status: false, message: res.error };
+            }
+            });
+            console.log(res)
+            return res;
+}
+async function GetEmail(email:string) {
+    console.log("Data sent to GetEmail:", email);
+    const requestOptions = {
+      method: "GET",
+      headers: {
+      "Content-Type": "application/json",
+      },
+      };
+    let res = await fetch(`${apiUrl}/email/${email}`, requestOptions)
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.data) {
+            return { status: true, message: res.data };
+            } else {
+            return { status: false, message: res.error };
+            }
+            });
+            console.log(res)
+            return res;
+}
 async function GetIdByPassword(password: string){
     const requestOptions = {
         method: "GET"
@@ -268,4 +307,6 @@ export {
     GetHour_of_works,
     GetAccommodations,
     GetService,
+    GetUserName,
+    GetEmail
 };

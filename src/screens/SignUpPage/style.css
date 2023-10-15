@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  
 }
 
 .sign-up-page .div-2 {
@@ -23,7 +24,7 @@
 
 .sign-up-page .overlap {
   -webkit-backdrop-filter: blur(15px) brightness(100%);
-  backdrop-filter: blur(15px) brightness(100%);
+  backdrop-filter: blur(10px) brightness(100%);
   background: linear-gradient(
     180deg,
     rgba(150.87, 150.87, 150.87, 0.5) 3.58%,
@@ -33,7 +34,7 @@
   );
   height: 100%;
   left: 40%;
-  position: absolute;
+  position: relative;
   top: 0;
   width: 60%;
   border-top-left-radius: 104px;
@@ -63,80 +64,80 @@
 }
 .sign-up-page .username-textbox {
   height: 45px;
-  position: absolute;
-  top: 130px;
-  width : 430px;
+  position: fixed;
+  top: 90px;
+  width : 200px;
   left: 200px;
 }
 
 .sign-up-page .firstname-textbox {
   height: 45px;
   position: absolute;
-  top: 220px;
-  width : 430px;
+  top: 180px;
+  width : 200px;
   left: 200px;
 }
 
 .sign-up-page .lastname-textbox {
   height: 45px;
-  position: absolute;
-  top: 310px;
-  width : 430px;
-  left: 200px;
+  position: fixed;
+  top: 180px;
+  width : 200px;
+  left: 440px;
 }
 .sign-up-page .email-textbox {
   height: 45px;
-  position: absolute;
-  top: 400px;
-  width : 430px;
+  position: fixed;
+  top: 270px;
+  width : 200px;
   left: 200px;
 }
 
 .sign-up-page .phone-textbox {
   height: 45px;
-  position: absolute;
-  top: 490px;
-  width : 430px;
-  left: 200px;
+  position: fixed;
+  top: 270px;
+  width : 200px;
+  left: 440px;
 }
 
 .sign-up-page .address-textbox {
   
   height: 137px;
   left: 200px;
-  position: absolute;
-  top: 580px;
-  width : 430px;
+  position: fixed;
+  top: 360px;
+  width : 440px;
 }
 .sign-up-page .password-textbox {
   height: 45px;
   left: 200px;
-  position: absolute;
-  top: 670px;
-  width : 430px;
+  position: fixed;
+  top: 450px;
+  width : 200px;
 }
 
 .sign-up-page .confirm-textbox {
 
   height: 45px;
-  left: 200px;
+  left: 440px;
   position: absolute;
-  top: 760px;
-  width : 430px;
+  top: 450px;
+  width : 200px;
 }
 
 .sign-up-page .sign-up {
-  color: #000000;
+  color: #040404;
   font-family: "Inter", Helvetica;
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 45px;
+  font-weight: 750;
   height: 124px;
   left: 205px;
   letter-spacing: 6px;
   line-height: normal;
-  position: absolute;
+  position: relative;
   text-align: center;
-  top: 40px;
+  top: 25px;
   width: 450px;
 }
 
@@ -162,7 +163,7 @@
   height: 45px !important;
   left: 140px !important;
   position: absolute !important;
-  top: 880px !important;
+  top: 450px !important;
   width: 150px !important;
   border-radius: 15px;
   font-size: 25px;

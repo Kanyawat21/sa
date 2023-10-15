@@ -204,13 +204,19 @@ export const BookingPage = (): JSX.Element => {
                       showCount
                       maxLength={100}
                       className="Pet_detail_TextBox"
-                      placeholder="Fill in about your pet"
                     />
                   </Form.Item> : null}
                 </Radio>
                 <Radio className="no" value={'no'}>NO</Radio>
               </Radio.Group>
             </Form.Item>     
+            {/* {yesno === 'yes' && (
+                <Form.Item name="Pet_detail">
+                  <div className="rectangle-1" />
+                  <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
+                </Form.Item>
+              )} */}
+
             <Form.Item>
              <Buttonn buttonTextClassName="button-2" className="button-instance" text="OK" />
             </Form.Item>   

@@ -215,7 +215,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 		
 			u := entity.Service{
 
-				Member: service.Member,
+				Member: member,
 				Accomodation: accommodation,
 				Hour_of_work: hour_of_work,
 				Maid: maid,

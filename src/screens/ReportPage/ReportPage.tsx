@@ -81,8 +81,6 @@ export const ReportPage = (): JSX.Element => {
               <Upload name="logo" action="/upload.do" listType="picture" onChange={onChange}>
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
               </Upload>
-            
-
             {/*=================================================================================== */}     
             <Button className="submitButton" type="default" htmlType="submit" style={{backgroundColor:'#FFE663', 
                                                                 borderRadius:'28.3px/28.5px', 

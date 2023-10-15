@@ -34,7 +34,7 @@ export const ProfilePage2 = (): JSX.Element => {
       
           <div className="text-wrapper-8">Address</div>
           <div className="boxaddress">
-            <textarea value={member.map((member) => member.Address)}></textarea>
+            <textarea readOnly value={member.map((member) => member.Address)}></textarea>
           </div>
           <Buttonn buttonTextClassName="button-2" className="button-instance" text="Save change" />
          

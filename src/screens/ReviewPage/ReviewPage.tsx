@@ -79,9 +79,8 @@ export const ReviewPage = (): JSX.Element => {
             </div>
             <Form onFinish={onFinish}>
             <div className='rate'>
-              <Form.Item name="Rate" rules={[{required: true, message: "กรุณาใส่คะแนน",}]}>
+              <Form.Item name="Rate" rules={[{required: true, message: "กรุณาเลือกคะแนน",}]}>
               <Select
-                defaultValue="RATE"
                 status="warning"
                 style={{ width: 200 }}
                 onChange={handleChange}
@@ -108,9 +107,6 @@ export const ReviewPage = (): JSX.Element => {
               <Button className="styled" htmlType="submit">SEND</Button>
             </Form.Item>
             </div>
-            <Form.Item name="MemberID">
-
-            </Form.Item>
             </Form>
           </div>
         </div>

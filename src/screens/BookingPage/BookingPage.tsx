@@ -9,7 +9,7 @@ import { BackButton4 } from "../../components/BackButton/BackButton";
 import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form, Card } from 'antd';
 import type { RadioChangeEvent } from 'antd';
 import { AccommodationInterface, Hour_of_workInterface,ServiceInterface, MemberInterface } from "../../interfaces/IData";
-import { GetAccommodations, GetHour_of_works, CreateService, GetMemberById} from "../../services/http";
+import { GetAccommodations, GetHour_of_works, CreateService, GetMemberShowId} from "../../services/http";
 import { Link,useLocation,useNavigate, useParams } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
 
@@ -17,7 +17,7 @@ import TextArea from "antd/es/input/TextArea";
 export const BookingPage = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const id = location.state?.id;;
+  const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
 
@@ -32,13 +32,12 @@ export const BookingPage = (): JSX.Element => {
   const [selectedAccommodationPrice, setSelectedAccommodationPrice] = useState<number>(0.0);
   const [selectedHour_of_workPrice, setSelectedHour_of_workPrice] = useState<number>(0.0);
 
-  // let {id} = useParams();
-  // const [form] = Form.useForm();
+
 
   const onFinish = async (values: ServiceInterface) => {
     const formatValues: ServiceInterface = {
       ID: values.ID,
-      // Member:1,
+      MemberID: Number(userId),
       Has_pet: values.Has_pet||'',
 
       Pet_detail: values.Pet_detail || '-',
@@ -60,7 +59,7 @@ export const BookingPage = (): JSX.Element => {
       formatValues.AccomodationID === null ||formatValues.Has_pet===''||
       formatValues.Hour_of_workID === null 
   ) {
-      messageApi.error('Please fill out all required fields');}
+      messageApi.error('Please fill in complete information');}
     else{
     let res = await CreateService(formatValues);
     if (res.status) {
@@ -82,14 +81,11 @@ export const BookingPage = (): JSX.Element => {
   };
 
   const getMemberById = async () => {
-    let res = await GetMemberById(Number(1));
+    let res = await GetMemberShowId(Number(userId));
     console.log(res)
     if (res) {
       setMember(res);
-      // form.setFieldsValue({
-      //   Address: res.Address,
-      //   Tel: res.Tel,
-      // });
+
     } console.log(res.Address);
   }
 

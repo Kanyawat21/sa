@@ -112,6 +112,24 @@ async function GetMemberById(id: Number){
       return res;
 }
 
+async function GetMemberShowId(id: Number | undefined) {
+    const requestOptions = {
+      method: "GET"
+    };
+  
+    let res = await fetch(`${apiUrl}/member/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
 async function GetIdByPassword(password: string){
     const requestOptions = {
         method: "GET"
@@ -268,4 +286,5 @@ export {
     GetHour_of_works,
     GetAccommodations,
     GetService,
+    GetMemberShowId,
 };

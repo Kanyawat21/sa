@@ -2,12 +2,13 @@ export interface ReviewInterface {
     
     Rate: number;
     Detail: string;
-    MemberID: Number;
+    MemberID: number;
 }
 
 export interface ReportInterface {
     Detail: string;
     Picture: string;
+    MemberID: number;
 }
 export interface UsersInterface {
     ID: number;

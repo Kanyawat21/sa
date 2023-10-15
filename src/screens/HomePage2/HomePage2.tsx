@@ -54,7 +54,6 @@ export const HomePage2 = (): JSX.Element => {
                 </Link>
             </div>
           )}
-          
         </div>
         <div className="overlap">
           <img

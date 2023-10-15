@@ -25,7 +25,7 @@ export interface ServiceInterface {
     ID?: number;
 
     MemberID?:number;
-
+    Has_pet?: string;
     Pet_detail?: string;
     PickDate?: string;
     PickTime?: string;

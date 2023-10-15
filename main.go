@@ -24,6 +24,7 @@ func main() {
 	r.GET("/accomodations", controller.ListAccomodations)
 	r.GET("/hour_of_works", controller.ListHour_of_works)
 	r.POST("/services", controller.CreateService)
+	r.GET("/member/:id", controller.GetMember)
 
 	r.Run("localhost: " + PORT)
 }

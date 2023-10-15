@@ -176,7 +176,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			var accommodation entity.Accomodation
 			var hour_of_work entity.Hour_of_work
 			var maid entity.Maid
-			// var member entity.Member
+			var member entity.Member
 			//----------------------------------------------
 			
 		
@@ -188,10 +188,11 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 		
 			}
 			//-----------------------------------------------
-			// if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
-			// 	c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
-			// 	return
-			// }
+
+			if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+				return
+			}
 			if tx := entity.DB().Where("status = ?", "ว่าง").First(&maid); tx.RowsAffected == 0 {
 					c.JSON(http.StatusBadRequest, gin.H{"error": "No available maids found"})
 					return
@@ -214,7 +215,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			// }
 		
 			u := entity.Service{
-				// Member: member,
+				Member: service.Member,
 				Accomodation: accommodation,
 				Hour_of_work: hour_of_work,
 				Maid: maid,
@@ -314,3 +315,21 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			
 			c.JSON(http.StatusOK, gin.H{"data": info})
 			}
+
+func GetMember(c *gin.Context) {//ดึงข้อมูลมาดูแต่ต้องการดูแค่คนนี้โดยใช้id
+
+	var member entity.Member
+	
+	id := c.Param("id")
+	
+	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", id).Scan(&member).Error; err != nil {
+	
+	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()}) //ในคำสั่งนี้ใช้คิวรี่เอาแค่ไอดีที่ส่งมานะ
+	
+	return
+	
+	}
+	
+	c.JSON(http.StatusOK, gin.H{"data": member})
+	
+	}

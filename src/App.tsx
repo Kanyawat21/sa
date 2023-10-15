@@ -41,8 +41,6 @@ const App: React.FC = () => {
         <Route path="/ProfilePage2"   element={<ProfilePage2/>}/>
       </Routes>
     </Router>
-    
-   
   );
 };
 

@@ -9,7 +9,7 @@ import { BackButton4 } from "../../components/BackButton/BackButton";
 import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form, Card } from 'antd';
 import type { RadioChangeEvent } from 'antd';
 import { AccommodationInterface, Hour_of_workInterface,ServiceInterface, MemberInterface } from "../../interfaces/IData";
-import { GetAccommodations, GetHour_of_works, CreateService, GetMemberShowId} from "../../services/http";
+import { GetAccommodations, GetHour_of_works, CreateService, GetMemberById} from "../../services/http";
 import { Link,useLocation,useNavigate, useParams } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
 
@@ -25,7 +25,7 @@ export const BookingPage = (): JSX.Element => {
   const YesnoChange = (e: RadioChangeEvent) => { console.log('radio checked', e.target.value); setYesno(e.target.value); };
   const { Option } = Select
   const [messageApi, contextHolder] = message.useMessage();
-  const [member, setMember] = useState<MemberInterface>();
+  const [member,setMember] = useState<MemberInterface[]>([]);
   const [Accommodations, setAccommodations] = useState<AccommodationInterface[]>([]);
   const [Hour_of_works, setHour_of_works] = useState<Hour_of_workInterface[]>([]);
 
@@ -37,17 +37,13 @@ export const BookingPage = (): JSX.Element => {
   const onFinish = async (values: ServiceInterface) => {
     const formatValues: ServiceInterface = {
       ID: values.ID,
-      MemberID: Number(userId),
+      // Member:1,
       Has_pet: values.Has_pet||'',
-
       Pet_detail: values.Pet_detail || '-',
-
       PickDate: formatDate(`${values.PickDate}`),
-
       PickTime: formatTime(`${values.PickTime}`),
       AccomodationID: values.AccomodationID,
-      Accomodation: values.Accomodation,
-      
+      Accomodation: values.Accomodation, 
       Hour_of_workID: values.Hour_of_workID,
       Hour_of_work: values.Hour_of_work
     }
@@ -81,7 +77,7 @@ export const BookingPage = (): JSX.Element => {
   };
 
   const getMemberById = async () => {
-    let res = await GetMemberShowId(Number(userId));
+    let res = await GetMemberById(Number(1));
     console.log(res)
     if (res) {
       setMember(res);
@@ -227,14 +223,14 @@ export const BookingPage = (): JSX.Element => {
                 <span style={{fontFamily:"Inter, Helvetica",marginTop:-5,fontSize:18}}> Service Location</span>
                 <br/><br/>
               <span style={{ fontSize: 18 }}>Address</span><br/>
-              <span style={{ fontSize: 18 }}> - {member?.Address}</span><br />
-              <span style={{ fontSize: 18 }}> Tel.{member?.Tel}</span>
+              <textarea className="textaddress" disabled value={member.map((member) => member.Address)}></textarea><br/>
+              <span style={{ fontSize: 18 }}> Tel.</span><br/>
+              <textarea  disabled value={member.map((member) => member.Tel)}></textarea>
             </Form>
           <span className="textService">Service Charge : </span>  
           <span className="textService1">{selectedAccommodationPrice + selectedHour_of_workPrice} Baht</span>
           {/*==============================================================*/}
           <div className="text-wrapper-9">Booking a service</div>
-
           <IconHome className="icon-home-2" /> {/*Return to homepage2 */}
         </div>
       </div>

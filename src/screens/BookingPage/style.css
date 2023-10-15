@@ -343,3 +343,9 @@
   /* top: 40px; */
   left: 0px;
 }
+
+.textaddress{
+  width: 390px;
+  height: 50px;
+  font-size: 15px;
+}

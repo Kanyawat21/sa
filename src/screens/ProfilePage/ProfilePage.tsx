@@ -21,11 +21,12 @@ export const ProfilePage = (): JSX.Element => {
     if (res) {
       setmember(res);
     }
-    console.log(member.map((member) => member.FirstName))
+
   };
   useEffect(() => {
     getMember();
   }, []);
+  console.log(member.map((member) => member.FirstName))
   return (
     <div className="profile-page">
       <div className="div-2">
@@ -34,23 +35,23 @@ export const ProfilePage = (): JSX.Element => {
           <AccountTab className="design-component-instance-node" property1="default"></AccountTab>
           <div className="text-wrapper-3">Email</div>
           <div className="boxemail">
-            <textarea value={member.map((member) => member.Email)}></textarea>
+            <textarea readOnly value={member.map((member) => member.Email)}></textarea>
           </div>
           <div className="text-wrapper-4">Username</div>
           <div className="boxusername">
-            <textarea value={member.map((member) => member.UserName)}></textarea>
+            <textarea readOnly value={member.map((member) => member.UserName)}></textarea>
           </div>
           <div className="text-wrapper-5">Phone number</div>
           <div className="boxphonenumber">
-            <textarea value={member.map((member) => member.Tel)}></textarea>   
+            <textarea readOnly value={member.map((member) => member.Tel)}></textarea>   
           </div>
           <div className="text-wrapper-6">First Name</div>
           <div className="boxfirstname">
-            <textarea value={member.map((member) => member.FirstName)}></textarea>
+            <textarea readOnly value={member.map((member) => member.FirstName)}></textarea>
           </div>
           <div className="text-wrapper-7">Last Name</div>
           <div className="boxlastname">
-            <textarea value={member.map((member) => member.LastName)}></textarea> 
+            <textarea readOnly value={member.map((member) => member.LastName)}></textarea> 
           </div>
           <div className="text-wrapper-8">Profile</div>
          

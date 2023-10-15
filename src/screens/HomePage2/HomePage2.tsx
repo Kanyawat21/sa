@@ -37,7 +37,7 @@ export const HomePage2 = (): JSX.Element => {
           <MainTab className="main-tab-instance" />
           <MaidLogoText className="maid-logo-text-instance" />
           <div className="price">Price</div>
-          <div className="username"><textarea value={member.map((member) => member.UserName)}></textarea></div>
+          <div className="username"><textarea readOnly value={member.map((member) => member.UserName)}></textarea></div>
           <div className="aboutus">About Us</div>
           <div className="contactus">Contact Us</div>
           <IconProfileCircle className="icon-profile-circle-instance" onClick={handleIconClick}/>
@@ -54,7 +54,6 @@ export const HomePage2 = (): JSX.Element => {
                 </Link>
             </div>
           )}
-          
         </div>
         <div className="overlap">
           <img

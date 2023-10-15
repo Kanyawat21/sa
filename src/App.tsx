@@ -24,6 +24,8 @@ import { ProfilePage2 }   from "./screens/ProfilePage2";
 //Project
 // hello word
 
+//note is comeback!!!!
+
 
 const App: React.FC = () => {
   return (

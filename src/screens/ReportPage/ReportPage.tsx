@@ -5,21 +5,26 @@ import { Input, message, Upload, Modal,Form,Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { ReportInterface } from "../../interfaces/IData";
 import { CreateReport } from "../../services/http";
+import { useLocation } from "react-router";
 
 export const ReportPage = (): JSX.Element => {
+  const location = useLocation();
+  const id = location.state?.id;;
+  const params = new URLSearchParams(location.search);
+  const userId = params.get('id');
   const [image, setImage] = useState('');
-
   const [reportData, setReportData] = useState<ReportInterface>({
     Detail: "", // สามารถกำหนดค่าเริ่มต้นเป็นค่าที่ต้องการ
     Picture: "", // สามารถกำหนดค่าเริ่มต้นเป็นค่าที่ต้องการ
+    MemberID: 0,
   });
   const [messageApi] = message.useMessage();
   const [isModalVisible, setIsModalVisible] = useState(false); // เพิ่ม state สำหรับ Modal
-
-
+  console.log(userId);
   const onFinish = async (values : ReportInterface) => {
     values.Detail = reportData.Detail;
     values.Picture = image;
+    values.MemberID = Number(userId);
     let res = await CreateReport(values);
     if (res.status) {
       messageApi.open({
@@ -27,7 +32,6 @@ export const ReportPage = (): JSX.Element => {
         content: "บันทึกข้อมูลสำเร็จ",
       });
       setIsModalVisible(true); // เมื่อสำเร็จให้เปิด Modal
-
     }
     console.log(res);
   }
@@ -77,8 +81,6 @@ export const ReportPage = (): JSX.Element => {
               <Upload name="logo" action="/upload.do" listType="picture" onChange={onChange}>
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
               </Upload>
-            
-
             {/*=================================================================================== */}     
             <Button className="submitButton" type="default" htmlType="submit" style={{backgroundColor:'#FFE663', 
                                                                 borderRadius:'28.3px/28.5px', 

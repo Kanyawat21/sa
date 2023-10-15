@@ -23,7 +23,6 @@ export const LoginPage = (): JSX.Element => {
             message.success("Welcome!");
             setTimeout(function () {
               navigate(`/HomePage2?id=${res.message.ID}`, { state: { id: res.message.ID } });
-            
           }, 2000);
         } else {
             // message.error("An error occurred. Please try again.");

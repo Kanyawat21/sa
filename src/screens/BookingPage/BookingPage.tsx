@@ -37,7 +37,7 @@ export const BookingPage = (): JSX.Element => {
   const onFinish = async (values: ServiceInterface) => {
     const formatValues: ServiceInterface = {
       ID: values.ID,
-      // Member:1,
+      MemberID: Number(userId),
       Has_pet: values.Has_pet||'',
       Pet_detail: values.Pet_detail || '-',
       PickDate: formatDate(`${values.PickDate}`),
@@ -77,7 +77,7 @@ export const BookingPage = (): JSX.Element => {
   };
 
   const getMemberById = async () => {
-    let res = await GetMemberById(Number(1));
+    let res = await GetMemberById(Number(userId));
     console.log(res)
     if (res) {
       setMember(res);
@@ -222,9 +222,9 @@ export const BookingPage = (): JSX.Element => {
               autoComplete="off">
                 <span style={{fontFamily:"Inter, Helvetica",marginTop:-5,fontSize:18}}> Service Location</span>
                 <br/><br/>
-              <span style={{ fontSize: 18 }}>Address</span><br/>
+              <span style={{ fontSize: 18,fontFamily:"Inter, Helvetica" }}>Address</span><br/>
               <textarea className="textaddress" disabled value={member.map((member) => member.Address)}></textarea><br/>
-              <span style={{ fontSize: 18 }}> Tel.</span><br/>
+              <span style={{ fontSize: 18 ,fontFamily:"Inter, Helvetica"}}> Tel.</span><br/>
               <textarea  disabled value={member.map((member) => member.Tel)}></textarea>
             </Form>
           <span className="textService">Service Charge : </span>  

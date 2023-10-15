@@ -19,7 +19,7 @@ import { ProfilePage2 }   from "./screens/ProfilePage2";
 
 //HELLO World โปรเจคโง่ๆ  ทำไมคะ?
 
-//เมื่อไรจะเสร็จจจจจ
+//เมื่อไรจะเสร็จจจจจ HI
 
 const App: React.FC = () => {
   return (

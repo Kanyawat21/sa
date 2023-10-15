@@ -13,8 +13,8 @@ type Member struct {
 	Email     string `gorm:"uniqueIndex"`
 	Tel       string
 	Address   string
-	
-	
+
+	Reviews []Review `gorm:"foreignKey:MemberID"`
 	// Reports  []Report  `gorm:"foreignKey:MemberID"`
 	// Services []Service `gorm:"foreignKey:MemberID"`
 }

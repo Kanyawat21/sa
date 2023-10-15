@@ -14,7 +14,7 @@ type Member struct {
 	Tel       string
 	Address   string
 	
-
+	
 	// Reports  []Report  `gorm:"foreignKey:MemberID"`
 	// Services []Service `gorm:"foreignKey:MemberID"`
 }

@@ -11,8 +11,8 @@ type Payment struct {
 	Receipt string
 	Date    time.Time
 
-	// ServiceID *uint
-	// Service   Service `gorm:"foreignKey:ServiceID"`
+	ServiceID *uint
+	Service   Service `gorm:"foreignKey:ServiceID"`
 
-	Histories []History `gorm:"foreignKey:PaymentID"`
+	//Histories []History `gorm:"foreignKey:PaymentID"`
 }

@@ -23,6 +23,8 @@ import { ProfilePage2 }   from "./screens/ProfilePage2";
 
 //Project
 
+//wryyyyyyyyyyyyyyyyyyy
+
 const App: React.FC = () => {
   return (
     <Router>

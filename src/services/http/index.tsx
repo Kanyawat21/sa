@@ -249,7 +249,7 @@ async function GetService(data: string | null) {
   };
   
   
-  let res = await fetch(`${apiUrl}/Members/${data}`, requestOptions)
+  let res = await fetch(`${apiUrl}/service/${data}`, requestOptions)
   
   .then((response) => response.json())
   

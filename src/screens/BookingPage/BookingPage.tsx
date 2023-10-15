@@ -35,10 +35,10 @@ export const BookingPage = (): JSX.Element => {
 
 
   const onFinish = async (values: ServiceInterface) => {
-    values.MemberID = Number(userId);
+  
     const formatValues: ServiceInterface = {
       ID: values.ID,
-      MemberID:values.MemberID,
+      MemberID:Number(userId),
       Has_pet: values.Has_pet||'',
       Pet_detail: values.Pet_detail || '-',
       PickDate: formatDate(`${values.PickDate}`),

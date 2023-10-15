@@ -71,8 +71,6 @@ export interface Service1Interface {
     
     Accom_type?:     string;
 
-    Accom_charge?:    string;
-
   HHour?:  string;
 
   Location ?:      string;
@@ -80,4 +78,8 @@ export interface Service1Interface {
     Have_pet?:   string;
 
     Date?:    string;
+
+    Time?: string;
+    Detail?: string;
+    Price?: Float32Array;
     }

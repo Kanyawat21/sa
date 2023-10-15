@@ -253,7 +253,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			Hour 	  entity.Hour_of_work
 		  }
 		  
-		  func GetService(c *gin.Context) {
+func GetService(c *gin.Context) {
 			type CombinedData struct {
 			  Service entity.Service
 			  Member  entity.Member
@@ -299,7 +299,7 @@ func ListHour_of_works(c *gin.Context) {//อยากดึงทั้งห�
 			}
 			info.Location = combinedData.Member.Address;
 			
-			if err := entity.DB().Raw("SELECT *  FROM accommodations WHERE id = ?", id).Scan(&combinedData.Accom).Error; err != nil {
+			if err := entity.DB().Raw("SELECT *  FROM accomodations WHERE id = ?", id).Scan(&combinedData.Accom).Error; err != nil {
 			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			  return
 			}

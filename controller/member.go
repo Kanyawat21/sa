@@ -271,6 +271,9 @@ func GetService(c *gin.Context) {
 				M_Tel string;
 				Have_pet string;
 				Location string;
+				Time string;
+				Detail string;
+				Price float32;
 			}
 			
 			id := c.Param("id")
@@ -278,12 +281,15 @@ func GetService(c *gin.Context) {
 			var combinedData CombinedData
 			var info BP2_info
 			
-			if err := entity.DB().Raw("SELECT * FROM services WHERE member_id = ?", id).Scan(&combinedData.Service).Error; err != nil {
+			if err := entity.DB().Raw("SELECT * FROM services WHERE member_id = ? ORDER BY created_at DESC LIMIT 1", id).Scan(&combinedData.Service).Error; err != nil {
 			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			  return
 			}
 			info.Date = combinedData.Service.PickDate;
+			info.Time = combinedData.Service.PickTime
+			info.Detail = combinedData.Service.Pet_detail;
 			info.Have_pet = combinedData.Service.Has_pet;
+			info.Price = combinedData.Service.Price;
 			
 			if err := entity.DB().Raw("SELECT * FROM maids WHERE id = ?",id).Scan(&combinedData.Maid).Error; err != nil {
 			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -304,7 +310,6 @@ func GetService(c *gin.Context) {
 			  return
 			}
 			info.Accom_type = combinedData.Accom.Name_type;
-			info.Accom_charge = combinedData.Accom.Price;
 			
 			if err := entity.DB().Raw("SELECT * FROM hour_of_works WHERE id = ?", id).Scan(&combinedData.HourOfWork).Error; err != nil {
 			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

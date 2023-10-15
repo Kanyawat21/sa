@@ -42,9 +42,9 @@ export interface ServiceInterface {
     }
 
  export interface MemberInterface{
-    ID?:number;
-	Tel?: string;
-	Address?:string;
+    ID:number;
+	Tel: string;
+	Address:string;
  }
 
 

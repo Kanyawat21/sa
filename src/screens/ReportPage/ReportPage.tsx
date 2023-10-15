@@ -20,7 +20,7 @@ export const ReportPage = (): JSX.Element => {
   });
   const [messageApi] = message.useMessage();
   const [isModalVisible, setIsModalVisible] = useState(false); // เพิ่ม state สำหรับ Modal
-
+  console.log(userId);
   const onFinish = async (values : ReportInterface) => {
     values.Detail = reportData.Detail;
     values.Picture = image;

@@ -210,12 +210,12 @@ export const BookingPage = (): JSX.Element => {
                 <Radio className="no" value={'no'}>NO</Radio>
               </Radio.Group>
             </Form.Item>     
-            {/* {yesno === 'yes' && (
+            {yesno === 'yes' && (
                 <Form.Item name="Pet_detail">
                   <div className="rectangle-1" />
                   <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
                 </Form.Item>
-              )} */}
+              )}
 
             <Form.Item>
              <Buttonn buttonTextClassName="button-2" className="button-instance" text="OK" />

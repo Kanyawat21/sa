@@ -2,6 +2,7 @@ export interface ReviewInterface {
     
     Rate: number;
     Detail: string;
+    MemberID: Number;
 }
 
 export interface ReportInterface {

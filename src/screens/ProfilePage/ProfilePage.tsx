@@ -21,11 +21,12 @@ export const ProfilePage = (): JSX.Element => {
     if (res) {
       setmember(res);
     }
-    console.log(member.map((member) => member.FirstName))
+
   };
   useEffect(() => {
     getMember();
   }, []);
+  console.log(member.map((member) => member.FirstName))
   return (
     <div className="profile-page">
       <div className="div-2">

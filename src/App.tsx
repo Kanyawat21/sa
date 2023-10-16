@@ -17,16 +17,6 @@ import { ProfilePage }    from "./screens/ProfilePage";
 import { ProfilePage2 }   from "./screens/ProfilePage2";
 
 
-//HELLO World โปรเจคโง่ๆ  ทำไมคะ?
-
-//เมื่อไรจะเสร็จจจจจ HI
-
-//Project
-// hello word
-
-//note is comeback!!!!
-
-
 const App: React.FC = () => {
   return (
     <Router>

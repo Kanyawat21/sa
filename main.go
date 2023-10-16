@@ -14,10 +14,9 @@ func main() {
 	r.Use(CORSMiddleware())
 	r.GET("/review", controller.ListReview)
 	r.GET("/review/:id", controller.GetReview)
-	r.POST("/member", controller.CreateMember)
 	r.POST("/review", controller.CreateReview)
 	r.POST("/report",controller.CreateReport)
-	r.POST("/Member", controller.CreateUser)
+	r.POST("/Member", controller.CreateMember)
 	r.GET("/Member/:user_name/:password", controller.ListUsers)
 	r.GET("members/:id", controller.GetMemberById)
 

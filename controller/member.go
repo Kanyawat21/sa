@@ -317,13 +317,11 @@ func GetService(c *gin.Context) {
 			var maid entity.Maid
 			var member entity.Member
 			//----------------------------------------------
-		
-			if err := c.ShouldBindJSON(&service); err != nil {
 
+			if err := c.ShouldBindJSON(&service); err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		
+
 				return
-		
 			}
 
 			if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
@@ -348,7 +346,6 @@ func GetService(c *gin.Context) {
 			// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			// 	return
 			// }
-		
 			u := entity.Service{
 				Member: member,
 				Accomodation: accommodation,
@@ -361,7 +358,6 @@ func GetService(c *gin.Context) {
 				Price: float32(accommodation.Price+hour_of_work.Price),
 			}
 			//-----------------------------------------------
-		
 			if err := entity.DB().Model(&maid).Update("status", "ไม่ว่าง").Error; err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
@@ -375,10 +371,7 @@ func GetService(c *gin.Context) {
 		
 			}
 			c.JSON(http.StatusOK, gin.H{"data": u})
-		
 		}
-
-		
 		
 		type CombinedData struct {
 			Service entity.Service

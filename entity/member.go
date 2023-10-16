@@ -16,5 +16,5 @@ type Member struct {
 
 	Reviews []Review `gorm:"foreignKey:MemberID"`
 	Reports []Report `gorm:"foreignKey:MemberID"`
-	// Services []Service `gorm:"foreignKey:MemberID"`
+	Services []Service `gorm:"foreignKey:MemberID"`
 }

@@ -151,10 +151,7 @@ func ListAccomodations(c *gin.Context) { //อยากดึงทั้งห�
 		return
 
 	}
-
-<<<<<<< HEAD
 	c.JSON(http.StatusOK, gin.H{"data": accomodations})
-
 }
 
 func ListHour_of_works(c *gin.Context) { //อยากดึงทั้งหมด
@@ -313,9 +310,6 @@ func GetService(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": info})
 }
-
-
-=======
 			var service entity.Service //สร้างข้อมูล
 			//---------------------------------------------
 			var accommodation entity.Accomodation
@@ -323,7 +317,6 @@ func GetService(c *gin.Context) {
 			var maid entity.Maid
 			var member entity.Member
 			//----------------------------------------------
-			
 		
 			if err := c.ShouldBindJSON(&service); err != nil {
 		
@@ -342,7 +335,6 @@ func GetService(c *gin.Context) {
 					return
 				}
 			
-		
 			if tx := entity.DB().Where("id = ?", service.AccomodationID).First(&accommodation); tx.RowsAffected == 0 {
 				c.JSON(http.StatusBadRequest, gin.H{"error": "Accommodation not found"})
 				return
@@ -351,7 +343,6 @@ func GetService(c *gin.Context) {
 				c.JSON(http.StatusBadRequest, gin.H{"error": "Hour of work not found"})
 				return
 			}
-		
 			// PickDate, err := time.Parse("2006-01-02", service.PickDate)
 			// if err != nil {
 			// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -359,7 +350,6 @@ func GetService(c *gin.Context) {
 			// }
 		
 			u := entity.Service{
-
 				Member: member,
 				Accomodation: accommodation,
 				Hour_of_work: hour_of_work,
@@ -483,7 +473,6 @@ func GetMember(c *gin.Context) {//ดึงข้อมูลมาดูแต�
 	c.JSON(http.StatusOK, gin.H{"data": member})
 	
 	}
->>>>>>> 1ff9d4a7a4c62c1caeff0695e0422af6ebf0ad8c
 
 // Ball Function
 func CreatePayment(c *gin.Context) {

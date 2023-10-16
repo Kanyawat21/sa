@@ -310,30 +310,4 @@ func GetService(c *gin.Context) {
 }
 
 // Ball Function
-func CreatePayment(c *gin.Context) {
-	var payment entity.Payment
-	payment.Date = time.Now()
-	//var service entity.Service
-
-	if err := c.ShouldBindJSON(&payment); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	p := entity.Payment{
-		Receipt:         payment.Receipt,
-		Date:            payment.Date,
-		ServiceID:       payment.ServiceID,
-		MemberID:        payment.MemberID,
-		MemberFirstName: payment.MemberFirstName,
-		MemberLastName:  payment.MemberLastName,
-	}
-
-	if err := entity.DB().Create(&p).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-
-	}
-
-	c.JSON(http.StatusOK, gin.H{"data": p})
-}
 

@@ -7,7 +7,6 @@ import type { ColumnsType } from "antd/es/table";
 import { ReviewInterface } from '../../interfaces/IData';
 import { CreateReview, ListReview } from '../../services/http'
 import { IconHome } from "../../components/IconHome";
-
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
@@ -113,4 +112,3 @@ export const ReviewPage = (): JSX.Element => {
       </div> 
   );
 }
-

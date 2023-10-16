@@ -37,13 +37,13 @@ export const StepBooking = ({
   return (
     <div className={`step-booking ${className}`}>
       <div className={`overlap ${overlapClassName}`}>
-        <div className={`text-wrapper ${divClassName}`}>1</div>
+        <div className={`textstep ${divClassName}`}>1</div>
       </div>
       <div className={`overlap-group ${overlapClassNameOverride}`}>
-        <div className={`text-wrapper ${divClassNameOverride}`}>2</div>
+        <div className={`textstep ${divClassNameOverride}`}>2</div>
       </div>
       <div className={`div-wrapper ${overlapGroupClassName}`}>
-        <div className={`text-wrapper ${divClassName1}`}>3</div>
+        <div className={`textstep ${divClassName1}`}>3</div>
       </div>
       <img className={`line ${lineClassName}`} alt="Line" src={line} />
       <img className={`img ${lineClassNameOverride}`} alt="Line" src={img} />

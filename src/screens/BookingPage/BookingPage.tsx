@@ -196,7 +196,9 @@ export const BookingPage = (): JSX.Element => {
             <Form.Item label={<span className="text4">Dose your place have pets? (if yes, please specify)</span>} name="Has_pet"
               labelCol={{ span: 25 }} style={{marginTop:10}}>
               <Radio.Group onChange={YesnoChange} value={yesno} >
-                <Radio className="yes" value={'yes'} >YES 
+                <Radio className="yes" value={'yes'} >YES {yesno === 'yes' ?
+                    <div className="rectangle-1" />
+                     : null}
                 </Radio>
                 <Radio className="no" value={'no'}>NO</Radio>
               </Radio.Group>

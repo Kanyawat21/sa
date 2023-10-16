@@ -125,15 +125,29 @@ func SetupDatabase() {
 	}
 	db.Model(&Maid{}).Create(&maid1)
 
-	// member := Member{
-	// 	UserName: "membernaja", 
-	// 	FirstName:"na",
-	// 	LastName: "ja",
-	// 	Email:"kkkkk@gmail.com",
-	// 	Password:"00000",
-	// 	Tel :"088888888",
-	// 	Address :"15 หมู่3 ต.โคกย่าง อ.โคราช จ.นครราชสีมา",
-	// }
-	// db.Model(&Member{}).Create(&member)
+	member := Member{
+		UserName: "membernaja", 
+		FirstName:"na",
+		LastName: "ja",
+		Email:"kkkkk@gmail.com",
+		Password:"00000",
+		Tel :"088888888",
+		Address :"15 หมู่3 ต.โคกย่าง อ.โคราช จ.นครราชสีมา",
+	}
+	db.Model(&Member{}).Create(&member)
+
+	s := Service{
+		Has_pet: "Yes",
+		Pet_detail: "Dog",
+		PickDate: "m",
+		PickTime: "y",
+		Price: 5000,
+		Member: member,
+		Maid: maid,
+		Hour_of_work: Hour4,
+		Accomodation: type1,
+		
+	}
+	db.Model(&Service{}).Create(&s)
 }
 

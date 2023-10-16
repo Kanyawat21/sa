@@ -1,4 +1,4 @@
-import { PaymentInterface,BookingPage3Interface } from "../../../interfaces/ball/IBP3";
+import { PaymentInterface } from "../../../interfaces/ball/IBP3";
 
 const apiUrl = "http://localhost:8080";
 

@@ -25,7 +25,7 @@ func main() {
 	r.GET("/hour_of_works", controller.ListHour_of_works)
 	r.POST("/services", controller.CreateService)
 	r.GET("/service/:id", controller.GetService)
-
+	r.GET("/services/:id",controller.ListServices)
 	//Ball
 	r.POST("/payments", controller.CreatePayment)
 	r.GET("/payments/:id", controller.GetBP3_info)

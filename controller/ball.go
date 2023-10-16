@@ -48,7 +48,6 @@ func DeletePaymentByID(c *gin.Context){
 func CreatePayment(c *gin.Context) {
 	var payment entity.Payment
 	payment.Date = time.Now()
-	//var service entity.Service
 
 	if err := c.ShouldBindJSON(&payment); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

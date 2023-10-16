@@ -19,12 +19,12 @@ func main() {
 	r.POST("/Member", controller.CreateMember)
 	r.GET("/Member/:user_name/:password", controller.GetMember)
 	r.GET("members/:id", controller.GetMemberById)
-
+	r.GET("/username/:user_name",controller.GetUsername)
+	r.GET("/email/:email",controller.GetEmail)
 	r.GET("/accomodations", controller.ListAccomodations)
 	r.GET("/hour_of_works", controller.ListHour_of_works)
 	r.POST("/services", controller.CreateService)
 	r.GET("/service/:id", controller.GetService)
-	r.GET("/member/:id", controller.GetMember)
 
 	//Ball
 	r.POST("/payments", controller.CreatePayment)

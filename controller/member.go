@@ -152,6 +152,7 @@ func ListAccomodations(c *gin.Context) { //อยากดึงทั้งห�
 
 	}
 
+<<<<<<< HEAD
 	c.JSON(http.StatusOK, gin.H{"data": accomodations})
 
 }
@@ -312,6 +313,177 @@ func GetService(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": info})
 }
+
+
+=======
+			var service entity.Service //สร้างข้อมูล
+			//---------------------------------------------
+			var accommodation entity.Accomodation
+			var hour_of_work entity.Hour_of_work
+			var maid entity.Maid
+			var member entity.Member
+			//----------------------------------------------
+			
+		
+			if err := c.ShouldBindJSON(&service); err != nil {
+		
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		
+				return
+		
+			}
+
+			if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+				return
+			}
+			if tx := entity.DB().Where("status = ?", "ว่าง").First(&maid); tx.RowsAffected == 0 {
+					c.JSON(http.StatusBadRequest, gin.H{"error": "No available maids found"})
+					return
+				}
+			
+		
+			if tx := entity.DB().Where("id = ?", service.AccomodationID).First(&accommodation); tx.RowsAffected == 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"error": "Accommodation not found"})
+				return
+			}
+			if tx := entity.DB().Where("id = ?", service.Hour_of_workID).First(&hour_of_work); tx.RowsAffected == 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"error": "Hour of work not found"})
+				return
+			}
+		
+			// PickDate, err := time.Parse("2006-01-02", service.PickDate)
+			// if err != nil {
+			// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			// 	return
+			// }
+		
+			u := entity.Service{
+
+				Member: member,
+				Accomodation: accommodation,
+				Hour_of_work: hour_of_work,
+				Maid: maid,
+				Has_pet:    service.Has_pet,         
+				Pet_detail: service.Pet_detail,
+				PickDate: service.PickDate,
+				PickTime: service.PickTime,
+				Price: float32(accommodation.Price+hour_of_work.Price),
+			}
+			//-----------------------------------------------
+		
+			if err := entity.DB().Model(&maid).Update("status", "ไม่ว่าง").Error; err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+		
+			if err := entity.DB().Create(&u).Error; err != nil {
+		
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		
+				return
+		
+			}
+			c.JSON(http.StatusOK, gin.H{"data": u})
+		
+		}
+
+		
+		
+		type CombinedData struct {
+			Service entity.Service
+			Member  entity.Member
+			Accom   entity.Accomodation
+			Maid	  entity.Maid
+			Hour 	  entity.Hour_of_work
+		  }
+		  
+func GetService(c *gin.Context) {
+			type CombinedData struct {
+			  Service entity.Service
+			  Member  entity.Member
+			  Accom   entity.Accomodation
+			  Maid    entity.Maid
+			  HourOfWork    entity.Hour_of_work
+			}
+			type BP2_info struct{
+				Accom_type string;
+				Accom_charge int;
+				HHour string;
+				Date string;
+				M_firstname string;
+				M_lastname string;
+				M_Tel string;
+				Have_pet string;
+				Location string;
+				Time string;
+				Detail string;
+				Price float32;
+			}
+			
+			id := c.Param("id")
+			
+			var combinedData CombinedData
+			var info BP2_info
+			
+			if err := entity.DB().Raw("SELECT * FROM services WHERE member_id = ? ORDER BY created_at DESC LIMIT 1", id).Scan(&combinedData.Service).Error; err != nil {
+			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			  return
+			}
+			info.Date = combinedData.Service.PickDate;
+			info.Time = combinedData.Service.PickTime
+			info.Detail = combinedData.Service.Pet_detail;
+			info.Have_pet = combinedData.Service.Has_pet;
+			info.Price = combinedData.Service.Price;
+			
+			if err := entity.DB().Raw("SELECT * FROM maids WHERE id = ?",id).Scan(&combinedData.Maid).Error; err != nil {
+			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			  return
+			}
+			info.M_firstname = combinedData.Maid.FirstName;
+			info.M_lastname = combinedData.Maid.LastName;
+			info.M_Tel = combinedData.Maid.Tel;
+			
+			if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?",id).Scan(&combinedData.Member).Error; err != nil {
+			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			  return
+			}
+			info.Location = combinedData.Member.Address;
+			
+			if err := entity.DB().Raw("SELECT *  FROM accomodations WHERE id = ?", id).Scan(&combinedData.Accom).Error; err != nil {
+			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			  return
+			}
+			info.Accom_type = combinedData.Accom.Name_type;
+			
+			if err := entity.DB().Raw("SELECT * FROM hour_of_works WHERE id = ?", id).Scan(&combinedData.HourOfWork).Error; err != nil {
+			  c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			  return
+			}
+			info.HHour = combinedData.HourOfWork.Hour;
+		
+			
+			c.JSON(http.StatusOK, gin.H{"data": info})
+			}
+
+func GetMember(c *gin.Context) {//ดึงข้อมูลมาดูแต่ต้องการดูแค่คนนี้โดยใช้id
+
+	var member entity.Member
+	
+	id := c.Param("id")
+	
+	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", id).Scan(&member).Error; err != nil {
+	
+	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()}) //ในคำสั่งนี้ใช้คิวรี่เอาแค่ไอดีที่ส่งมานะ
+	
+	return
+	
+	}
+	
+	c.JSON(http.StatusOK, gin.H{"data": member})
+	
+	}
+>>>>>>> 1ff9d4a7a4c62c1caeff0695e0422af6ebf0ad8c
 
 // Ball Function
 func CreatePayment(c *gin.Context) {

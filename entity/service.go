@@ -27,8 +27,6 @@ type Service struct {
 	Maid   Maid `gorm:"foreignKey:MaidID"`
 
 
-	// Reviews []Review `gorm:"foreignKey:ServiceID"`
-
 	// Payments []Payment `gorm:"foreignKey:ServiceID"`
 
 	// Histories []History `gorm:"foreignKey:ServiceID"`

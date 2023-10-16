@@ -24,6 +24,8 @@ func main() {
 	r.GET("/accomodations", controller.ListAccomodations)
 	r.GET("/hour_of_works", controller.ListHour_of_works)
 	r.POST("/services", controller.CreateService)
+	r.GET("/service/:id", controller.GetService)
+	r.GET("/member/:id", controller.GetMember)
 
 	//Ball
 	r.POST("/payments", controller.CreatePayment)
@@ -32,7 +34,7 @@ func main() {
 
 	r.Run("localhost: " + PORT)
 }
-
+//cs
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")

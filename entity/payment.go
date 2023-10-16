@@ -2,7 +2,6 @@ package entity
 
 import (
 	"time"
-
 	"gorm.io/gorm"
 )
 
@@ -18,6 +17,4 @@ type Payment struct {
 	Member	Member `gorm:"foreignKey:MemberID"`
 	MemberFirstName string
 	MemberLastName string
-
-	//Histories []History `gorm:"foreignKey:PaymentID"`
 }

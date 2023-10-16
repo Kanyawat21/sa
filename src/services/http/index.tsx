@@ -102,7 +102,6 @@ async function ListUsers(data: UsersInterface) {
   return res;
 }
 
-<<<<<<< HEAD
 async function GetMemberById(id: Number) {
   const requestOptions = {
     method: "GET",
@@ -133,40 +132,6 @@ async function GetIdByPassword(password: string) {
       }
     });
   return res;
-=======
-async function GetMemberShowId(id: Number | undefined) {
-    const requestOptions = {
-      method: "GET"
-    };
-  
-    let res = await fetch(`${apiUrl}/member/${id}`, requestOptions)
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.data) {
-          return res.data;
-        } else {
-          return false;
-        }
-      });
-  
-    return res;
-  }
-
-async function GetIdByPassword(password: string){
-    const requestOptions = {
-        method: "GET"
-      };
-      let res = await fetch(`${apiUrl}/members/${password}`, requestOptions)
-        .then((response) => response.json())
-        .then((res) => {
-          if (res.data) {
-            return res.data;
-          } else {
-            return false;
-          }
-        });
-      return res;
->>>>>>> 62ac8b33f359859ba04279d29d762d0f4f5927af
 }
 //-------------------praw-------------------------------
 async function CreateService(data: ServiceInterface) {
@@ -234,7 +199,6 @@ async function GetHour_of_works() {
 
 async function GetService(data: string | null) {
   const requestOptions = {
-<<<<<<< HEAD
     method: "GET",
 
     headers: {
@@ -255,46 +219,9 @@ async function GetService(data: string | null) {
 
   return res;
 }
-=======
-  
-  method: "GET",
-  
-  headers: {
-  
-  "Content-Type": "application/json",
-  
-  },
-  
-  };
-  
-  
-  let res = await fetch(`${apiUrl}/service/${data}`, requestOptions)
-  
-  .then((response) => response.json())
-  
-  .then((res) => {
-  
-  if (res.data) {
-  
-  return res.data;
-  
-  } else {
-  
-  return false;
-  
-  }
-  
-  });
-  
-  
-  return res;
-  
-  }
->>>>>>> 62ac8b33f359859ba04279d29d762d0f4f5927af
 
 // ==============================export=====================
 export {
-<<<<<<< HEAD
   ListReview,
   CreateReview,
   CreateReport,
@@ -307,18 +234,3 @@ export {
   GetAccommodations,
   GetService,
 };
-=======
-    ListReview,
-    CreateReview,
-    CreateReport,
-    CreateUser,
-    ListUsers,
-    GetMemberById,
-    GetIdByPassword,
-    CreateService,
-    GetHour_of_works,
-    GetAccommodations,
-    GetService,
-    GetMemberShowId,
-};
->>>>>>> 62ac8b33f359859ba04279d29d762d0f4f5927af

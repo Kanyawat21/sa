@@ -72,7 +72,7 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="service-charge-xxxx">
               Service
               Charge:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <div className="text-wrapper-12">{userData ? `${(userData as Service1Interface).Accom_charge}` : 'N/A'}</div>
+              <div className="text-wrapper-12">{userData ? `${(userData as Service1Interface).Price}` : 'N/A'}</div>
               Baht
             </div>
             <div className="text-wrapper-20">Accommodation Type :</div>
@@ -89,6 +89,12 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="text-wrapper-14">{userData ? `${(userData as Service1Interface).M_firstname}` : 'N/A'}{userData ? `${(userData as Service1Interface).M_lastname}` : 'N/A'}</div>
             <div className="text-wrapper-15">Maid's tel:</div>
             <div className="text-wrapper-16">{userData ? `${(userData as Service1Interface).M_Tel}` : 'N/A'}</div>
+            <div className="text-wrapper-17">;{userData ? `${(userData as Service1Interface).Time}` : 'N/A'}</div>
+            <div className="text-wrapper-18">
+                {userData && (userData as Service1Interface).Detail 
+                !== '-' ? `${(userData as Service1Interface).Detail}` : ''}
+            </div>
+
             
             <Link to={`/BookingPage3?id=${userId}`}>
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />

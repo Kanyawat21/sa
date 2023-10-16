@@ -17,7 +17,7 @@ import TextArea from "antd/es/input/TextArea";
 export const BookingPage = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const id = location.state?.id;;
+  const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
 
@@ -25,30 +25,26 @@ export const BookingPage = (): JSX.Element => {
   const YesnoChange = (e: RadioChangeEvent) => { console.log('radio checked', e.target.value); setYesno(e.target.value); };
   const { Option } = Select
   const [messageApi, contextHolder] = message.useMessage();
-  const [member, setMember] = useState<MemberInterface>();
+  const [member,setMember] = useState<MemberInterface[]>([]);
   const [Accommodations, setAccommodations] = useState<AccommodationInterface[]>([]);
   const [Hour_of_works, setHour_of_works] = useState<Hour_of_workInterface[]>([]);
 
   const [selectedAccommodationPrice, setSelectedAccommodationPrice] = useState<number>(0.0);
   const [selectedHour_of_workPrice, setSelectedHour_of_workPrice] = useState<number>(0.0);
 
-  // let {id} = useParams();
-  // const [form] = Form.useForm();
+
 
   const onFinish = async (values: ServiceInterface) => {
+  
     const formatValues: ServiceInterface = {
       ID: values.ID,
-      // Member:1,
+      MemberID:Number(userId),
       Has_pet: values.Has_pet||'',
-
       Pet_detail: values.Pet_detail || '-',
-
       PickDate: formatDate(`${values.PickDate}`),
-
       PickTime: formatTime(`${values.PickTime}`),
       AccomodationID: values.AccomodationID,
-      Accomodation: values.Accomodation,
-      
+      Accomodation: values.Accomodation, 
       Hour_of_workID: values.Hour_of_workID,
       Hour_of_work: values.Hour_of_work
     }
@@ -60,7 +56,7 @@ export const BookingPage = (): JSX.Element => {
       formatValues.AccomodationID === null ||formatValues.Has_pet===''||
       formatValues.Hour_of_workID === null 
   ) {
-      messageApi.error('Please fill out all required fields');}
+      messageApi.error('Please fill in complete information');}
     else{
     let res = await CreateService(formatValues);
     if (res.status) {
@@ -82,14 +78,11 @@ export const BookingPage = (): JSX.Element => {
   };
 
   const getMemberById = async () => {
-    let res = await GetMemberById(Number(1));
+    let res = await GetMemberById(Number(userId));
     console.log(res)
     if (res) {
       setMember(res);
-      // form.setFieldsValue({
-      //   Address: res.Address,
-      //   Tel: res.Tel,
-      // });
+
     } console.log(res.Address);
   }
 
@@ -204,20 +197,18 @@ export const BookingPage = (): JSX.Element => {
               labelCol={{ span: 25 }} style={{marginTop:10}}>
               <Radio.Group onChange={YesnoChange} value={yesno} >
                 <Radio className="yes" value={'yes'} >YES {yesno === 'yes' ?
-                  <Form.Item
-                    name="Pet_detail">
                     <div className="rectangle-1" />
-                    <TextArea
-                      showCount
-                      maxLength={100}
-                      className="Pet_detail_TextBox"
-                      placeholder="Fill in about your pet"
-                    />
-                  </Form.Item> : null}
+                     : null}
                 </Radio>
                 <Radio className="no" value={'no'}>NO</Radio>
               </Radio.Group>
             </Form.Item>     
+            {yesno === 'yes' && (
+                <Form.Item name="Pet_detail">
+                  <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
+                </Form.Item>
+              )}
+
             <Form.Item>
              <Buttonn buttonTextClassName="button-2" className="button-instance" text="OK" />
             </Form.Item>   
@@ -225,20 +216,18 @@ export const BookingPage = (): JSX.Element => {
             <Form className="textLocation"
               name="b"
               layout="vertical"
-              // form={form}
-              // onFinish={onFinish1}
               autoComplete="off">
                 <span style={{fontFamily:"Inter, Helvetica",marginTop:-5,fontSize:18}}> Service Location</span>
                 <br/><br/>
-              <span style={{ fontSize: 18 }}>Address</span><br/>
-              <span style={{ fontSize: 18 }}> - {member?.Address}</span><br />
-              <span style={{ fontSize: 18 }}> Tel.{member?.Tel}</span>
+              <span style={{ fontSize: 18,fontFamily:"Inter, Helvetica" }}>Address</span><br/>
+              <textarea className="textaddress" disabled value={member.map((member) => member.Address)}></textarea><br/>
+              <span style={{ fontSize: 18 ,fontFamily:"Inter, Helvetica"}}> Tel.</span><br/>
+              <textarea  disabled value={member.map((member) => member.Tel)}></textarea>
             </Form>
           <span className="textService">Service Charge : </span>  
           <span className="textService1">{selectedAccommodationPrice + selectedHour_of_workPrice} Baht</span>
           {/*==============================================================*/}
           <div className="text-wrapper-9">Booking a service</div>
-
           <IconHome className="icon-home-2" /> {/*Return to homepage2 */}
         </div>
       </div>

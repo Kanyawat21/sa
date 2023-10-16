@@ -17,7 +17,7 @@ func main() {
 	r.POST("/review", controller.CreateReview)
 	r.POST("/report",controller.CreateReport)
 	r.POST("/Member", controller.CreateMember)
-	r.GET("/Member/:user_name/:password", controller.ListUsers)
+	r.GET("/Member/:user_name/:password", controller.GetMember)
 	r.GET("members/:id", controller.GetMemberById)
 
 	r.GET("/accomodations", controller.ListAccomodations)

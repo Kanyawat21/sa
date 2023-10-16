@@ -216,8 +216,6 @@ export const BookingPage = (): JSX.Element => {
             <Form className="textLocation"
               name="b"
               layout="vertical"
-              // form={form}
-              // onFinish={onFinish1}
               autoComplete="off">
                 <span style={{fontFamily:"Inter, Helvetica",marginTop:-5,fontSize:18}}> Service Location</span>
                 <br/><br/>

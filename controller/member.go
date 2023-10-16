@@ -329,6 +329,22 @@ func GetService(c *gin.Context) {
 				fmt.Println("email:",member.Email)
 			}
 
+func ListServices(c *gin.Context) {
+	// รับ ID จากคำขอ HTTP
+	id := c.Param("id")
 
+	var services []entity.Service
+	if err := entity.DB().
+		Preload("Maid").
+		Where("id = ?", id).
+		Order("id desc").
+		Find(&services).Error; err != nil {
+
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": services})
+}
 // Ball Function
 

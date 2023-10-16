@@ -213,7 +213,7 @@ func CreateService(c *gin.Context) {
 	// }
 
 	u := entity.Service{
-		// Member: member,
+		Member: member,
 		Accomodation: accommodation,
 		Hour_of_work: hour_of_work,
 		Maid:         maid,

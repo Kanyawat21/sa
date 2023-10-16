@@ -24,7 +24,7 @@ func GetBP3_info(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", id).Scan(&m).Error; err != nil {
+	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", s.MemberID).Scan(&m).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

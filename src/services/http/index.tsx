@@ -101,6 +101,51 @@ async function ListUsers(data: UsersInterface) {
   console.log(res);
   return res;
 }
+async function GetUserName(data: string) {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let res = await fetch(
+    `${apiUrl}/username/${data}`,
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return { status: true, message: res.data };
+      } else {
+        return { status: false, message: res.error };
+      }
+    });
+  console.log(res);
+  return res;
+}
+
+async function GetEmail(data:string) {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let res = await fetch(
+    `${apiUrl}/username/${data}`,
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return { status: true, message: res.data };
+      } else {
+        return { status: false, message: res.error };
+      }
+    });
+  console.log(res);
+  return res;
+}
 
 async function GetMemberById(id: Number) {
   const requestOptions = {
@@ -118,20 +163,20 @@ async function GetMemberById(id: Number) {
   return res;
 }
 
-async function GetIdByPassword(password: string) {
-  const requestOptions = {
-    method: "GET",
-  };
-  let res = await fetch(`${apiUrl}/members/${password}`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return res.data;
-      } else {
-        return false;
-      }
-    });
-  return res;
+async function GetIdByPassword(password: string){
+    const requestOptions = {
+        method: "GET"
+      };
+      let res = await fetch(`${apiUrl}/members/${password}`, requestOptions)
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.data) {
+            return res.data;
+          } else {
+            return false;
+          }
+        });
+      return res;
 }
 //-------------------praw-------------------------------
 async function CreateService(data: ServiceInterface) {
@@ -222,15 +267,17 @@ async function GetService(data: string | null) {
 
 // ==============================export=====================
 export {
-  ListReview,
-  CreateReview,
-  CreateReport,
-  CreateUser,
-  ListUsers,
-  GetMemberById,
-  GetIdByPassword,
-  CreateService,
-  GetHour_of_works,
-  GetAccommodations,
-  GetService,
+    ListReview,
+    CreateReview,
+    CreateReport,
+    CreateUser,
+    ListUsers,
+    GetMemberById,
+    GetIdByPassword,
+    CreateService,
+    GetHour_of_works,
+    GetAccommodations,
+    GetService,
+    GetUserName,
+    GetEmail
 };

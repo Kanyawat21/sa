@@ -4,31 +4,39 @@ import "./style.css";
 import {  message } from 'antd';
 import { useNavigate , Link } from 'react-router-dom';
 import { UsersInterface } from "../../interfaces/IData";
-import { CreateUser } from "../../services/http";
+import { CreateUser, GetUserName,GetEmail } from "../../services/http";
 import { Button, Checkbox, Form, Input } from 'antd';
+import React from "react";
 export const SignUpPage = (): JSX.Element => {
 
     const navigate = useNavigate();
     const onFinish = async (values: UsersInterface) => {
+      if(values.Password.length>3){
+      let response = await GetUserName(values.UserName)
+      let ress = await GetEmail(values.Email)
+      if (response.status ) {
+        message.error("usernameซ้ำ!")}
+      else if(ress.status){
+        message.error("emailซ้ำ!")
+      }else{
+        let res = await CreateUser(values);
     
-    let res = await CreateUser(values);
+        if (res.status) {
+          message.success("success! Welcome!");
     
-    if (res.status) {
-    
-      message.success("success! Welcome!");
-    
-    setTimeout(function () {
-    
-    navigate("/LoginPage");
-    
-    }, 2000);
-    
-    } else {
-    
-    console.log(res);
-    }
-    
+          setTimeout(function () {
+            navigate("/LoginPage");
+          }, 2000);
+        } else {
+          console.log(res);
+        }}
+      }
+      else{
+        message.error("รหัสผ่านต้องมีความยาวมากกว่า4ตัว")
+      }
+      
     };
+    
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
@@ -51,7 +59,7 @@ export const SignUpPage = (): JSX.Element => {
     <Form.Item
       className = "username-textbox"
       label="Username"
-      name="Username"
+      name="UserName"
       rules={[{ required: true, message: 'Please input your username!' }]}
     >
     <Input style={{ fontSize: '16px' }}/>
@@ -167,3 +175,4 @@ export const SignUpPage = (): JSX.Element => {
   );
 
 };
+

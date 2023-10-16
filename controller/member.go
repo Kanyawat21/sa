@@ -179,13 +179,10 @@ func CreateService(c *gin.Context) {
 	var maid entity.Maid
 	var member entity.Member
 	//----------------------------------------------
-
 	if err := c.ShouldBindJSON(&service); err != nil {
 
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
 	//-----------------------------------------------
 	// if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {

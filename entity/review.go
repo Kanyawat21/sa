@@ -9,6 +9,4 @@ type Review struct {
 
 	MemberID *uint
 	Member   Member `gorm:"foreignKey:MemberID"`
-	// ServiceID *uint
-	// Service Service `gorm:"foreignKey:ServiceID"`
 }

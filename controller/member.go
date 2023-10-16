@@ -297,7 +297,37 @@ func GetService(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"data": info})
 			}
 
-
+			func GetUsername(c *gin.Context) {
+				var member entity.Member
+				username := c.Param("user_name")
+				if err := entity.DB().Raw("SELECT user_name FROM members WHERE user_name = ?", username).Scan(&member).Error; err != nil {
+					c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+					return
+				}
+				if(username!=member.UserName){
+					c.JSON(http.StatusOK, gin.H{"data": member.UserName})
+					return
+				}
+				c.JSON(http.StatusOK, gin.H{"data": member.UserName})
+				
+			}
+			func GetEmail(c *gin.Context) {
+				var member entity.Member
+				email := c.Param("email")
+				
+				if err := entity.DB().Raw("SELECT email FROM members WHERE email = ?", email).Scan(&member).Error; err != nil {
+					c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+					return
+				}
+				if(email!=member.Email){
+					c.JSON(http.StatusOK, gin.H{"data": member.Email})
+					fmt.Println("in it")
+					return
+				}
+				c.JSON(http.StatusOK, gin.H{"data": member.Email})
+				fmt.Println("email:",email)
+				fmt.Println("email:",member.Email)
+			}
 
 
 // Ball Function

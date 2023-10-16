@@ -153,7 +153,6 @@ func ListAccomodations(c *gin.Context) { //อยากดึงทั้งห�
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": accomodations})
-
 }
 
 func ListHour_of_works(c *gin.Context) { //อยากดึงทั้งหมด
@@ -179,15 +178,12 @@ func CreateService(c *gin.Context) {
 	var accommodation entity.Accomodation
 	var hour_of_work entity.Hour_of_work
 	var maid entity.Maid
-	// var member entity.Member
+	var member entity.Member
 	//----------------------------------------------
-
 	if err := c.ShouldBindJSON(&service); err != nil {
 
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
 	//-----------------------------------------------
 	// if tx := entity.DB().Where("id = ?", service.MemberID).First(&member); tx.RowsAffected == 0 {
@@ -215,7 +211,7 @@ func CreateService(c *gin.Context) {
 	// }
 
 	u := entity.Service{
-		// Member: member,
+		Member: member,
 		Accomodation: accommodation,
 		Hour_of_work: hour_of_work,
 		Maid:         maid,
@@ -312,24 +308,6 @@ func GetService(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": info})
 }
-
-func GetMember(c *gin.Context) {//ดึงข้อมูลมาดูแต่ต้องการดูแค่คนนี้โดยใช้id
-
-	var member entity.Member
-	
-	id := c.Param("id")
-	
-	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", id).Scan(&member).Error; err != nil {
-	
-	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()}) //ในคำสั่งนี้ใช้คิวรี่เอาแค่ไอดีที่ส่งมานะ
-	
-	return
-	
-	}
-	
-	c.JSON(http.StatusOK, gin.H{"data": member})
-	
-	}
 
 // Ball Function
 func CreatePayment(c *gin.Context) {

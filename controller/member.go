@@ -8,18 +8,6 @@ import (
 	"github.com/n6teen/reactbasic/entity"
 )
 
-func CreateMember(c *gin.Context) {
-	var member entity.Member
-	if err := c.ShouldBindJSON(&member); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	if err := entity.DB().Create(&member).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"data": member})
-}
 
 // =====================================================================Review
 func CreateReview(c *gin.Context) {
@@ -71,7 +59,7 @@ func CreateReport(c *gin.Context) {
 //=====================================================================User
 // POST /users
 
-func CreateUser(c *gin.Context) {
+func CreateMember(c *gin.Context) {
 	var members entity.Member
 
 	if err := c.ShouldBindJSON(&members); err != nil {
@@ -86,9 +74,9 @@ func CreateUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": members})
 }
-func ListUsers(c *gin.Context) {
-	username := c.Param("user_name")
-	password := c.Param("password")
+func GetMember(c *gin.Context) {
+	username := c.Param("user_name") 
+	password := c.Param("password") 
 	var user entity.Member
 	fmt.Println(password)
 
@@ -98,24 +86,24 @@ func ListUsers(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 
-	} else {
-		if username != user.UserName {
+	}else{
+		if(username!=user.UserName){
 			fmt.Println(username)
 			fmt.Println(user.UserName)
 			c.JSON(http.StatusBadRequest, gin.H{"error": "User Not found"})
 			return
-		} else {
-			if password != user.Password {
+		}else{
+			if (password!=user.Password){
 				c.JSON(http.StatusBadRequest, gin.H{"error": "invalid password"})
 				fmt.Println(password)
 				fmt.Println(user.Password)
 				return
-			} else {
+			}else{
 				c.JSON(http.StatusOK, gin.H{"data": user})
 				return
-			}
+				}
+			} 
 		}
-	}
 }
 
 func GetMemberById(c *gin.Context) {
@@ -309,23 +297,7 @@ func GetService(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"data": info})
 			}
 
-func GetMember(c *gin.Context) {//ดึงข้อมูลมาดูแต่ต้องการดูแค่คนนี้โดยใช้id
 
-	var member entity.Member
-	
-	id := c.Param("id")
-	
-	if err := entity.DB().Raw("SELECT * FROM members WHERE id = ?", id).Scan(&member).Error; err != nil {
-	
-	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()}) //ในคำสั่งนี้ใช้คิวรี่เอาแค่ไอดีที่ส่งมานะ
-	
-	return
-	
-	}
-	
-	c.JSON(http.StatusOK, gin.H{"data": member})
-	
-	}
 
 
 // Ball Function

@@ -7,8 +7,6 @@ import type { ColumnsType } from "antd/es/table";
 import { ReviewInterface } from '../../interfaces/IData';
 import { CreateReview, ListReview } from '../../services/http'
 import { IconHome } from "../../components/IconHome";
-import { Buttonn } from '../../components/Button';
-
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
@@ -30,12 +28,12 @@ const columns: ColumnsType<ReviewInterface> = [
       key: "3",
   }
   ];   
-
 export const ReviewPage = (): JSX.Element => {
   const location = useLocation();
   const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
+  console.log(userId);
   const [reviews, setReview] = useState<ReviewInterface[]>([]);
   const listReview = async () => {
       let res = await ListReview();
@@ -48,12 +46,16 @@ export const ReviewPage = (): JSX.Element => {
       },[]);
       const [messageApi] = message.useMessage();
       const onFinish = async (values: ReviewInterface) => {
+        values.MemberID = Number(userId);
         let res = await CreateReview(values);
         if (res.status) {
         messageApi.open({
         type: "success",
         content: "บันทึกข้อมูลสำเร็จ",
         });
+        setTimeout(function () {
+          window.location.reload();
+      }, 100);
       }
       console.log(values);
     }
@@ -76,9 +78,8 @@ export const ReviewPage = (): JSX.Element => {
             </div>
             <Form onFinish={onFinish}>
             <div className='rate'>
-              <Form.Item name="Rate" rules={[{required: true, message: "กรุณาใส่คะแนน",}]}>
+              <Form.Item name="Rate" rules={[{required: true, message: "กรุณาเลือกคะแนน",}]}>
               <Select
-                defaultValue="RATE"
                 status="warning"
                 style={{ width: 200 }}
                 onChange={handleChange}
@@ -97,7 +98,7 @@ export const ReviewPage = (): JSX.Element => {
             </div>
             <div className='textarea'>
             <Form.Item name="Detail">
-            <TextArea style={{ height: 200, resize: 'none' }}placeholder="Comment Here" defaultValue={"-"} />
+              <TextArea style={{ height: 200, resize: 'none' }}placeholder="Comment Here"/>
             </Form.Item>
             </div>
             <div className='buttonlayout'>
@@ -111,4 +112,3 @@ export const ReviewPage = (): JSX.Element => {
       </div> 
   );
 }
-

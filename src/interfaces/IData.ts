@@ -2,11 +2,13 @@ export interface ReviewInterface {
     
     Rate: number;
     Detail: string;
+    MemberID: number;
 }
 
 export interface ReportInterface {
     Detail: string;
     Picture: string;
+    MemberID: number;
 }
 export interface UsersInterface {
     ID: number;
@@ -21,13 +23,11 @@ export interface UsersInterface {
 export interface ServiceInterface {
 
     ID?: number;
-    // Member?:number;
+
+    MemberID?:number;
     Has_pet?: string;
-    
     Pet_detail?: string;
-    
     PickDate?: string;
-    
     PickTime?: string;
 
     AccomodationID?: number
@@ -40,9 +40,9 @@ export interface ServiceInterface {
     }
 
  export interface MemberInterface{
-    ID?:number;
-	Tel?: string;
-	Address?:string;
+    ID:number;
+	Tel: string;
+	Address:string;
  }
 
 
@@ -71,8 +71,6 @@ export interface Service1Interface {
     
     Accom_type?:     string;
 
-    Accom_charge?:    string;
-
   HHour?:  string;
 
   Location ?:      string;
@@ -80,4 +78,8 @@ export interface Service1Interface {
     Have_pet?:   string;
 
     Date?:    string;
+
+    Time?: string;
+    Detail?: string;
+    Price?: Float32Array;
     }

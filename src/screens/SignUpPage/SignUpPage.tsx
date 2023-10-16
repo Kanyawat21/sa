@@ -11,6 +11,7 @@ export const SignUpPage = (): JSX.Element => {
 
     const navigate = useNavigate();
     const onFinish = async (values: UsersInterface) => {
+      if(values.Password.length>3){
       let response = await GetUserName(values.UserName)
       let ress = await GetEmail(values.Email)
       if (response.status ) {
@@ -29,6 +30,10 @@ export const SignUpPage = (): JSX.Element => {
         } else {
           console.log(res);
         }}
+      }
+      else{
+        message.error("รหัสผ่านต้องมีความยาวมากกว่า4ตัว")
+      }
       
     };
     

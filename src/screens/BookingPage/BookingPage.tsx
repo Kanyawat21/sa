@@ -196,23 +196,13 @@ export const BookingPage = (): JSX.Element => {
             <Form.Item label={<span className="text4">Dose your place have pets? (if yes, please specify)</span>} name="Has_pet"
               labelCol={{ span: 25 }} style={{marginTop:10}}>
               <Radio.Group onChange={YesnoChange} value={yesno} >
-                <Radio className="yes" value={'yes'} >YES {yesno === 'yes' ?
-                  <Form.Item
-                    name="Pet_detail">
-                    <div className="rectangle-1" />
-                    <TextArea
-                      showCount
-                      maxLength={100}
-                      className="Pet_detail_TextBox"
-                    />
-                  </Form.Item> : null}
+                <Radio className="yes" value={'yes'} >YES 
                 </Radio>
                 <Radio className="no" value={'no'}>NO</Radio>
               </Radio.Group>
             </Form.Item>     
             {yesno === 'yes' && (
                 <Form.Item name="Pet_detail">
-                  <div className="rectangle-1" />
                   <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
                 </Form.Item>
               )}

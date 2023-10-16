@@ -185,7 +185,7 @@
         line-height: normal;
         position: absolute;
         text-align: center;
-        top: 550px;
+        top: 570px;
         white-space: nowrap;
       }
       
@@ -213,7 +213,7 @@
         line-height: normal;
         position: absolute;
         top: 200px;
-        width: 6px;
+        width: 130px;
       }
       .booking-page2 .text-wrapper-8 {
         color: #000000;
@@ -253,7 +253,7 @@
         letter-spacing: 0;
         line-height: normal;
         position: absolute;
-        top: 580px;
+        top: 610px;
         white-space: nowrap;
       }
       .booking-page2 .text-wrapper-11 {
@@ -363,13 +363,13 @@
       .booking-page2 .text-wrapper-18 {
         color: #000000;
       font-family: "Inter-SemiBold", Helvetica;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 600;
       height: 24px;
       left: 350px;
       letter-spacing: 0;
       line-height: normal;
       position: absolute;
-      top: 515px;
+      top: 518px;
       white-space: nowrap;
       }

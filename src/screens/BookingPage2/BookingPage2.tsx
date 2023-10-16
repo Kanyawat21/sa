@@ -90,9 +90,9 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="text-wrapper-15">Maid's tel:</div>
             <div className="text-wrapper-16">{userData ? `${(userData as Service1Interface).M_Tel}` : 'N/A'}</div>
             <div className="text-wrapper-17">;{userData ? `${(userData as Service1Interface).Time}` : 'N/A'}</div>
-            {/* <div className="text-wrapper-18">{userData ? `${(userData as Service1Interface).Detail}` : 'N/A'}</div> */}
             <div className="text-wrapper-18">
-                {userData && (userData as Service1Interface).Detail !== '-' ? `${(userData as Service1Interface).Detail}` : ''}
+                {userData && (userData as Service1Interface).Detail 
+                !== '-' ? `${(userData as Service1Interface).Detail}` : ''}
             </div>
 
             

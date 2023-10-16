@@ -177,7 +177,7 @@ func CreateService(c *gin.Context) {
 	var accommodation entity.Accomodation
 	var hour_of_work entity.Hour_of_work
 	var maid entity.Maid
-	// var member entity.Member
+	var member entity.Member
 	//----------------------------------------------
 
 	if err := c.ShouldBindJSON(&service); err != nil {
@@ -319,7 +319,7 @@ func GetService(c *gin.Context) {
 			//----------------------------------------------
 		
 			if err := c.ShouldBindJSON(&service); err != nil {
-		
+
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		
 				return

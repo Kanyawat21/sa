@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BackgoundWhite } from "../../components/BackgoundWhite";
 import { Buttonn } from "../../components/Button";
-import { IconHome } from "../../components/IconHome";
+// import { IconHome } from "../../components/IconHome";
 import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
 
@@ -33,7 +33,6 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
-        console.log(response);
         
       } else {
         throw new Error('User not found');
@@ -43,7 +42,6 @@ export const BookingPage2 = (): JSX.Element => {
       setUserData(null);
     }
   };
-
   return (
     
     <div className="booking-page2">
@@ -99,7 +97,7 @@ export const BookingPage2 = (): JSX.Element => {
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />
             </Link>
             <div className="text-wrapper-11">Booking a service</div>
-            <IconHome className="icon-home-2" />
+            {/* <IconHome className="icon-home-2" /> */}
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ export const BookingPage2 = (): JSX.Element => {
   const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
-  const [accomamadation, setUserAC] = useState(null);
+ 
 
   useEffect(() => {
     if (userId) {

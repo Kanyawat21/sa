@@ -209,13 +209,7 @@ func CreateService(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"data": u})
 }
 		
-		type CombinedData struct {
-			Service entity.Service
-			Member  entity.Member
-			Accom   entity.Accomodation
-			Maid	  entity.Maid
-			Hour 	  entity.Hour_of_work
-		  }
+
 		  
 func GetService(c *gin.Context) {
 			type CombinedData struct {

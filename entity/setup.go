@@ -108,7 +108,7 @@ func SetupDatabase() {
 	maid := Maid{
 		FirstName:"hi",
 		LastName: "i'maid",
-		Tel: "0885574777",
+		Tel: "088-5574777",
 		Dob:"2023-12-12",
 		Exp :"เคยเลี้ยงเด็ก",
 		Status: "ว่าง",
@@ -117,13 +117,23 @@ func SetupDatabase() {
 
 	maid1 := Maid{
 		FirstName:"melo",
-		LastName: "i'maid",
-		Tel: "123456789",
+		LastName: "lemon",
+		Tel: "123-456789",
 		Dob:"2023-12-12",
 		Exp :"-",
 		Status: "ว่าง",
 	}
 	db.Model(&Maid{}).Create(&maid1)
+
+	maid2 := Maid{
+		FirstName:"plam",
+		LastName: "kim",
+		Tel: "091-3788549",
+		Dob:"1997-05-23",
+		Exp :"-",
+		Status: "ว่าง",
+	}
+	db.Model(&Maid{}).Create(&maid2)
 
 	member := Member{
 		UserName: "membernaja", 

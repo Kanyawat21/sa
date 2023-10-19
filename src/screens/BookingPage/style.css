@@ -347,7 +347,10 @@
 }
 
 .textaddress{
-  width: 390px;
-  height: 50px;
-  font-size: 15px;
+  width: 385px;
+  height: 45px;
+  font-size: 18px;
+  text-align: left;
+  font-family: "Inter", Helvetica;
+  padding-left: 20px;
 }

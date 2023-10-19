@@ -217,8 +217,8 @@ export const BookingPage = (): JSX.Element => {
                 <br/><br/>
               <span style={{ fontSize: 18,fontFamily:"Inter, Helvetica" }}>Address</span><br/>
               <textarea className="textaddress" disabled value={member.map((member) => member.Address)}></textarea><br/>
-              <span style={{ fontSize: 18 ,fontFamily:"Inter, Helvetica"}}> Tel.</span><br/>
-              <textarea  disabled value={member.map((member) => member.Tel)}></textarea>
+              <span> Tel.</span><br/>
+              <textarea className="textaddress" style={{lineHeight:"45px"}} disabled value={member.map((member) => member.Tel)}></textarea>
             </Form>
           <span className="textService">Service Charge : </span>  
           <span className="textService1">{selectedAccommodationPrice + selectedHour_of_workPrice} Baht</span>

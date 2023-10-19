@@ -335,12 +335,15 @@
 
 .booking-page .Pet_detail_TextBox{
   color: #000000;
-  resize: none;
   position: absolute;
   width: 456px;
   height: 100px;
   margin-top: -60px;
   left: 780px;
+}
+.booking-page .Pet_detail_TextBox .ant-input {
+  text-align: left !important;
+  font-size: 18px !important;
 }
 
 .textaddress{

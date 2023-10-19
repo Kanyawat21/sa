@@ -360,8 +360,8 @@
         white-space: nowrap;
       }
 
-      .booking-page2 .text-wrapper-18 {
-        color: #000000;
+.booking-page2 .text-wrapper-18 {
+      color: #000000;
       font-family: "Inter-SemiBold", Helvetica;
       font-size: 16px;
       font-weight: 600;
@@ -373,3 +373,17 @@
       top: 518px;
       white-space: nowrap;
       }
+
+.contact{
+  color: #ff0000;
+  font-family: "Inter", Helvetica;
+  font-size: 20px;
+  height: 24px;
+  left: 560px;
+  letter-spacing: 2px;
+  line-height: normal;
+  position: absolute;
+  text-align: right;
+  top: 785px;
+  white-space: nowrap;
+}

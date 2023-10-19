@@ -4,9 +4,9 @@ import { Buttonn } from "../../components/Button";
 import { IconHome } from "../../components/IconHome";
 import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
-import {BackButton5 } from "../../components/BackButton/BackButton";
+
 import { Link, useLocation } from "react-router-dom";
-import { Service1Interface ,UsersInterface } from "../../interfaces/IData";
+import { Service1Interface } from "../../interfaces/IData";
 import { GetService } from "../../services/http";
 const apiUrl = "http://localhost:8080";
 
@@ -16,11 +16,6 @@ export const BookingPage2 = (): JSX.Element => {
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
 
-
-  // const location = useLocation();
-  // const params = new URLSearchParams(location.search);
-  // const id = params.get("id");
-  // const idAsString = id ? id.toString() : "";
   const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
@@ -38,7 +33,7 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
-        console.log(response)
+        console.log(response);
         
       } else {
         throw new Error('User not found');
@@ -94,6 +89,9 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="text-wrapper-18">
                 {userData && (userData as Service1Interface).Detail 
                 !== '-' ? `${(userData as Service1Interface).Detail}` : ''}
+            </div>
+            <div className="contact">if you would like to edit your booking, please contact us
+              <br/>contact : koratmaid@gmail.com
             </div>
 
             

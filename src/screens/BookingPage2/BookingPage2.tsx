@@ -38,6 +38,7 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
+        console.log(response)
         
       } else {
         throw new Error('User not found');
@@ -86,7 +87,7 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="text-wrapper-9">{userData ? `${(userData as Service1Interface).Date}` : 'N/A'}</div>
             <div className="text-wrapper-10">{userData ? `${(userData as Service1Interface).Location}` : 'N/A'}</div>
             <div className="text-wrapper-13">Maid:</div>
-            <div className="text-wrapper-14">{userData ? `${(userData as Service1Interface).M_firstname}` : 'N/A'}{userData ? `${(userData as Service1Interface).M_lastname}` : 'N/A'}</div>
+            <div className="text-wrapper-14">{userData ? `${(userData as Service1Interface).M_firstname} ${(userData as Service1Interface).M_lastname}`: 'N/A'}</div>
             <div className="text-wrapper-15">Maid's tel:</div>
             <div className="text-wrapper-16">{userData ? `${(userData as Service1Interface).M_Tel}` : 'N/A'}</div>
             <div className="text-wrapper-17">;{userData ? `${(userData as Service1Interface).Time}` : 'N/A'}</div>

@@ -130,9 +130,9 @@ func ListAccomodations(c *gin.Context) { //อยากดึงทั้งห�
 	c.JSON(http.StatusOK, gin.H{"data": accomodations})
 }
 
-func ListHour_of_works(c *gin.Context) { //อยากดึงทั้งหมด
+func ListHour_of_works(c *gin.Context) { 
 
-	var hour_of_works []entity.Hour_of_work //ดึงข้อมูลทั้งหมดจะmapและดึงข้อมูลไปใส่ให้เช็คว่ามีerrorไหม
+	var hour_of_works []entity.Hour_of_work
 
 	if err := entity.DB().Raw("SELECT * FROM hour_of_works").Scan(&hour_of_works).Error; err != nil {
 
@@ -177,11 +177,7 @@ func CreateService(c *gin.Context) {
 				c.JSON(http.StatusBadRequest, gin.H{"error": "Hour of work not found"})
 				return
 			}
-			// PickDate, err := time.Parse("2006-01-02", service.PickDate)
-			// if err != nil {
-			// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			// 	return
-			// }
+			
 			u := entity.Service{
 				Member: member,
 				Accomodation: accommodation,
@@ -208,14 +204,7 @@ func CreateService(c *gin.Context) {
 			}
 			c.JSON(http.StatusOK, gin.H{"data": u})
 }
-		
-		type CombinedData struct {
-			Service entity.Service
-			Member  entity.Member
-			Accom   entity.Accomodation
-			Maid	  entity.Maid
-			Hour 	  entity.Hour_of_work
-		  }
+
 		  
 func GetService(c *gin.Context) {
 			type CombinedData struct {

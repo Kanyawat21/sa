@@ -7,7 +7,7 @@ import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
 import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form} from 'antd';
 import type { RadioChangeEvent } from 'antd';
-import { AccommodationInterface, Hour_of_workInterface,ServiceInterface, MemberInterface } from "../../interfaces/IData";
+import { AccommodationInterface, Hour_of_workInterface,ServiceInterface,UsersInterface } from "../../interfaces/IData";
 import { GetAccommodations, GetHour_of_works, CreateService, GetMemberById} from "../../services/http";
 import { useLocation,useNavigate} from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
@@ -24,7 +24,7 @@ export const BookingPage = (): JSX.Element => {
   const YesnoChange = (e: RadioChangeEvent) => { console.log('radio checked', e.target.value); setYesno(e.target.value); };
   const { Option } = Select
   const [messageApi, contextHolder] = message.useMessage();
-  const [member,setMember] = useState<MemberInterface[]>([]);
+  const [member,setMember] = useState<UsersInterface[]>([]);
   const [Accommodations, setAccommodations] = useState<AccommodationInterface[]>([]);
   const [Hour_of_works, setHour_of_works] = useState<Hour_of_workInterface[]>([]);
 
@@ -153,7 +153,7 @@ export const BookingPage = (): JSX.Element => {
                   if (option) {
                     const price = option['data-price'];
                     setSelectedAccommodationPrice(price);
-                    console.log('Accommodation:',price); // แสดงค่า data-price ในคอนโซล
+                    console.log('Accommodation:',price); 
                   }
                 }}
               >
@@ -171,7 +171,7 @@ export const BookingPage = (): JSX.Element => {
                   if (option) {
                     const price = option['data-price'];
                     setSelectedHour_of_workPrice(price);
-                    console.log('Hour of work:',price); // แสดงค่า data-price ในคอนโซล
+                    console.log('Hour of work:',price); 
                   }
                 }}
               >
@@ -254,4 +254,18 @@ function formatTime(inputDateString: string): string {
 
 
 
+function formatDate(inputDateString: string): string {
+  const inputDate = new Date(inputDateString);
 
+  if (isNaN(inputDate.getTime())) {
+    // throw new Error('Invalid date');
+    console.error('Invalid Date');
+    return '';
+  }
+
+  const year = inputDate.getUTCFullYear().toString().padStart(4, '0');
+  const month = (inputDate.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = inputDate.getUTCDate().toString().padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}

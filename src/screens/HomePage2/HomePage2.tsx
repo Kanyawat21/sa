@@ -4,15 +4,14 @@ import { IconProfileCircle } from "../../components/IconProfileCircle";
 import { MaidLogoText } from "../../components/MaidLogoText";
 import { MainTab } from "../../components/MainTab";
 import "./style.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UsersInterface } from "../../interfaces/IData";
 import { GetMemberById } from "../../services/http";
 
 export const HomePage2 = (): JSX.Element => {
-  const navigate = useNavigate();
+  
   const [isDropVisible, setIsDropVisible] = useState(false);
   const location = useLocation();
-  const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
   const handleIconClick = () => {

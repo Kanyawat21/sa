@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BackgoundWhite } from "../../components/BackgoundWhite";
 import { Buttonn } from "../../components/Button";
-// import { IconHome } from "../../components/IconHome";
 import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
 
@@ -14,7 +13,7 @@ const apiUrl = "http://localhost:8080";
 
 export const BookingPage2 = (): JSX.Element => {
   const location = useLocation();
-  const id = location.state?.id;;
+  // const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
   const idAsString = userId ? userId.toString() : "";
@@ -27,22 +26,18 @@ export const BookingPage2 = (): JSX.Element => {
     let res = await GetServiceID();
     if (res) {
       setSid(res);
-      console.log(res);
     }
   };
 
 
   useEffect(() => {
     getServiceID();
-    console.log(sid)
   },[]);
   
   useEffect(() => {
     if (userId) {
-      // Fetch user data based on the userId
       fetchUserData(idAsString);
-    }
-  }, [userId]);
+    } }, [userId]);
 
   const fetchUserData = async (idAsString: string) => {
     try {

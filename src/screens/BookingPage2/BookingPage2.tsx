@@ -21,20 +21,20 @@ export const BookingPage2 = (): JSX.Element => {
 
   const [userData, setUserData] = useState(null);
   
-  const [sid, setSid] = useState();
+  const [sid, setSid] = useState<RealServiceInterface>();
  
   const getServiceID = async () => {
     let res = await GetServiceID();
     if (res) {
       setSid(res);
       console.log(res);
-      setSid(res);
     }
   };
 
 
   useEffect(() => {
     getServiceID();
+    console.log(sid)
   },[]);
   
   useEffect(() => {
@@ -111,7 +111,7 @@ export const BookingPage2 = (): JSX.Element => {
             
 
             
-            <Link to={`/BookingPage3?id=${sid}`}>
+            <Link to={`/BookingPage3?id=${sid?.ID}`}>
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />
             </Link>
             <div className="text-wrapper-11">Booking a service</div>

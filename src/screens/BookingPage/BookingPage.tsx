@@ -13,6 +13,7 @@ import { useLocation,useNavigate, useParams } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
 
 
+
 export const BookingPage = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -100,9 +101,11 @@ export const BookingPage = (): JSX.Element => {
     getHourOfWork();
     getMemberById();
   }, []);
+
   const disabledDate: DatePickerProps['disabledDate'] = (current) => {
     return current && current < dayjs().subtract(1, 'day').endOf('day');
   };
+
 
  
   return (
@@ -186,7 +189,8 @@ export const BookingPage = (): JSX.Element => {
               </Form.Item>
               <Form.Item name="PickTime" 
                 style={{ display: 'inline-block', margin: '0 8px' }}>
-                <TimePicker className="custom-TimePicker" format="HH:mm" ></TimePicker>
+                <TimePicker className="custom-TimePicker" format="HH:mm" 
+                ></TimePicker>
               </Form.Item >
             </Form.Item>
             <Form.Item label={<span className="text4">Dose your place have pets? (if yes, please specify)</span>} name="Has_pet"

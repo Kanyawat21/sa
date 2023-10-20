@@ -15,7 +15,6 @@ export const BookingPage2 = (): JSX.Element => {
   const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-
   const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
@@ -33,6 +32,7 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
+      
         
       } else {
         throw new Error('User not found');
@@ -93,7 +93,7 @@ export const BookingPage2 = (): JSX.Element => {
             </div>
 
             
-            <Link to={`/BookingPage3?id=${userId}`}>
+            <Link to={`/BookingPage3?id=${(userId)}`}>
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />
             </Link>
             <div className="text-wrapper-11">Booking a service</div>

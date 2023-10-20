@@ -8,6 +8,8 @@ import { CreateReport } from "../../services/http";
 import { useLocation } from "react-router";
 
 export const ReportPage = (): JSX.Element => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const location = useLocation();
   const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
@@ -82,16 +84,16 @@ export const ReportPage = (): JSX.Element => {
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
               </Upload>
             {/*=================================================================================== */}     
-            <Button className="submitButton" type="default" htmlType="submit" style={{backgroundColor:'#FFE663', 
+            <Button className="submitButton" type="default" htmlType="submit" style={{backgroundColor:isHovered?'#000000':'#FFE663', 
                                                                 borderRadius:'28.3px/28.5px', 
                                                                 height:55, 
                                                                 width:140,
                                                                 fontSize:20,
                                                                 fontFamily: "Inter,Helvetica",
                                                                 boxShadow:"0px 4px 4px #00000040",
-                                                                color:'black',
+                                                                color:isHovered?"white":'black',
                                                                 position:"absolute",
-                                                                fontWeight:700}}>Submit</Button>
+                                                                fontWeight:700}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>Submit</Button>
             </Form.Item>
             </Form>
             {isModalVisible && (

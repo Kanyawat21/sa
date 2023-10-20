@@ -53,7 +53,7 @@ export const BookingPage3 : React.FC = () => {
           content:"อัปโหลดสำเร็จ",
         })
         setTimeout(function(){
-          navigate(`/BookingPageEnd?id=${userId}`);
+          navigate(`/BookingPageEnd?id=${values.MemberID}`);
         },500);
       }else{
         message.open({

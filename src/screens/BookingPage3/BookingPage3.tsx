@@ -115,9 +115,6 @@ export const BookingPage3 : React.FC = () => {
       <div style={{backgroundColor:"#FFFFFF",position:"absolute", top:"15%",width:"100%", height:"85%",borderRadius:"5% 5% 0 0",}}/>
       <div style={{width:"100%",height:"20%",display:"flex",justifyContent:"center",alignItems:"center"}} >
          <p style={{marginBottom:"4%",fontFamily:"Helvetica",fontSize:(screenWidth*0.02),fontWeight:700}}>Booking a service</p>
-            <Link to={`/HomePage2?id=${userId}`}>
-              <div style={{position:"absolute",top:"6%",left:"5%"}}><img src="https://c.animaapp.com/1cGgrXG8/img/---icon--home-2--1@2x.png" alt="" width={(screenWidth*0.026)} /></div>
-            </Link>
             <Link to={`/BookingPage2?id=${userId}`}>
             <div style={{position:"absolute",top:"6%",left:"10%"}}><img src="https://c.animaapp.com/iqEoUPux/img/group-2@2x.png" alt="" width={(screenWidth*0.026)} /></div>
             </Link>

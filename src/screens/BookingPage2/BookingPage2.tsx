@@ -32,15 +32,16 @@ export const BookingPage2 = (): JSX.Element => {
   // useEffect(() => {
   //   getServiceID();
   //   console.log(sid)
-  // },[sid]);
+  // },[]);
   
   useEffect(() => {
-    getServiceID();
+    getServiceID()
     if (userId) {
       // Fetch user data based on the userId
       fetchUserData(userId);
     }
-  },[userId]);
+    console.log(sid)
+  },[]);
 
   const fetchUserData = async (idAsString: string) => {
     try {

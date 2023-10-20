@@ -204,7 +204,7 @@ export const BookingPage = (): JSX.Element => {
             </Form.Item>     
             {yesno === 'yes' && (
                 <Form.Item name="Pet_detail">
-                  <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
+                  <TextArea showCount maxLength={100} className="Pet_detail_TextBox"  placeholder="Fill in about your pet"/>
                 </Form.Item>
               )}
             
@@ -254,18 +254,4 @@ function formatTime(inputDateString: string): string {
 
 
 
-function formatDate(inputDateString: string): string {
-  const inputDate = new Date(inputDateString);
 
-  if (isNaN(inputDate.getTime())) {
-    // throw new Error('Invalid date');
-    console.error('Invalid Date');
-    return '';
-  }
-
-  const year = inputDate.getUTCFullYear().toString().padStart(4, '0');
-  const month = (inputDate.getUTCMonth() + 1).toString().padStart(2, '0');
-  const day = inputDate.getUTCDate().toString().padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-}

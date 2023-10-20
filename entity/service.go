@@ -10,8 +10,8 @@ type Service struct {
 	gorm.Model
 	Has_pet    string
 	Pet_detail string
-	PickDate       string
-	PickTime       string
+	PickDate       string `gorm:"type:date"`
+	PickTime       string `gorm:"type:time"`
 	Price float32
 
 	MemberID *uint

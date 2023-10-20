@@ -10,7 +10,7 @@ type Maid struct {
 	FirstName string
 	LastName  string
 	Tel       string
-	Dob       string
+	Dob       string `gorm:"type:date"`
 	Exp       string
 	Address   string
 	Status 	  string

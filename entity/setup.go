@@ -51,7 +51,7 @@ func SetupDatabase() {
 	db.Model(&Accomodation{}).Create(&type3)
 
 	type4 := Accomodation{
-		Name_type: "Office",
+		Name_type: "Dorm",
 		Price: 500,
 	}
 	db.Model(&Accomodation{}).Create(&type4)
@@ -146,18 +146,6 @@ func SetupDatabase() {
 	}
 	db.Model(&Member{}).Create(&member)
 
-	// s := Service{
-	// 	Has_pet: "Yes",
-	// 	Pet_detail: "Dog",
-	// 	PickDate: "m",
-	// 	PickTime: "y",
-	// 	Price: 5000,
-	// 	Member: member,
-	// 	Maid: maid,
-	// 	Hour_of_work: Hour4,
-	// 	Accomodation: type1,
-		
-	// }
-	// db.Model(&Service{}).Create(&s)
+
 }
 

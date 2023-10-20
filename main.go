@@ -30,6 +30,7 @@ func main() {
 	r.POST("/payments", controller.CreatePayment)
 	r.GET("/payments/:id", controller.GetBP3_info)
 	r.DELETE("/payments/delete/:id", controller.DeletePaymentByID)
+	r.GET("/payments/getSID", controller.GetServiceID);
 
 	r.Run("localhost: " + PORT)
 }

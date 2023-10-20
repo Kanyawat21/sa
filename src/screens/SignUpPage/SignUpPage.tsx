@@ -5,7 +5,7 @@ import {  message } from 'antd';
 import { useNavigate , Link } from 'react-router-dom';
 import { UsersInterface } from "../../interfaces/IData";
 import { CreateUser, GetUserName,GetEmail } from "../../services/http";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import React from "react";
 export const SignUpPage = (): JSX.Element => {
 

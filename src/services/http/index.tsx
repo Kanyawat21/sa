@@ -133,7 +133,7 @@ async function GetEmail(data:string) {
     },
   };
   let res = await fetch(
-    `${apiUrl}/username/email/${data}`,
+    `${apiUrl}/email/${data}`,
     requestOptions
   )
     .then((response) => response.json())

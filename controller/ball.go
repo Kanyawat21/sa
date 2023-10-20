@@ -70,3 +70,12 @@ func CreatePayment(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": p})
 }
+
+func GetServiceID(c *gin.Context){
+	var sid entity.Service;
+	if err := entity.DB().Raw("SELECT * FROM services ORDER BY created_at DESC LIMIT 1 ").Scan(&sid).Error;  err != nil{
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": sid})
+}

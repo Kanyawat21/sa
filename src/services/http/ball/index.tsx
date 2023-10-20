@@ -1,4 +1,4 @@
-import { PaymentInterface } from "../../../interfaces/ball/IBP3";
+import { PaymentInterface, RealServiceInterface } from "../../../interfaces/ball/IBP3";
 
 const apiUrl = "http://localhost:8080";
 
@@ -61,8 +61,30 @@ async function DeletePaymentByID(id: Number | undefined) {
   return res;
 }
 
+async function GetServiceID() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/payments/getSID`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
 export{
     CreatePayment,
     GetBPP3Info,
-    DeletePaymentByID
+    DeletePaymentByID,
+    GetServiceID
 };

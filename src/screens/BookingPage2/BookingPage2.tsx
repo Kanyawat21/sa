@@ -9,7 +9,7 @@ import { Service1Interface } from "../../interfaces/IData";
 import { GetService } from "../../services/http";
 import { RealServiceInterface } from "../../interfaces/ball/IBP3";
 import { GetServiceID } from "../../services/http/ball";
-const apiUrl = "http://localhost:8080";
+
 
 export const BookingPage2 = (): JSX.Element => {
   const location = useLocation();

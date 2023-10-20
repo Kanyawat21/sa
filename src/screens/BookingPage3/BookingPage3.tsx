@@ -17,7 +17,7 @@ export const BookingPage3 : React.FC = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const id = parseInt(params.get("id")||'0')
-  const userId = params.get('id');
+  //const userId = params.get('id');
   
   const navigate = useNavigate();
   const [image, setImage] = useState('');
@@ -45,7 +45,7 @@ export const BookingPage3 : React.FC = () => {
     values.MemberID = info?.MemberID;
     values.MemberFirstName = info?.MemberFirstName;
     values.MemberLastName = info?.MemberLastName;
-    if(values.Receipt != ''){
+    if(values.Receipt !== ''){
       let res = await http.CreatePayment(values);
       if(res.status ){
         message.open({
@@ -74,7 +74,7 @@ export const BookingPage3 : React.FC = () => {
 
 
   function onChange(info : any) {
-    if(info.file.status == 'error'){
+    if(info.file.status === 'error'){
       info.file.status = 'done'
       let s = info.file.originFileObj;
       const a = new FileReader();
@@ -115,10 +115,10 @@ export const BookingPage3 : React.FC = () => {
       <div style={{backgroundColor:"#FFFFFF",position:"absolute", top:"15%",width:"100%", height:"85%",borderRadius:"5% 5% 0 0",}}/>
       <div style={{width:"100%",height:"20%",display:"flex",justifyContent:"center",alignItems:"center"}} >
          <p style={{marginBottom:"4%",fontFamily:"Helvetica",fontSize:(screenWidth*0.02),fontWeight:700}}>Booking a service</p>
-            <Link to={`/HomePage2?id=${userId}`}>
+            {/* <Link to={`/HomePage2?id=${userId}`}>
               <div style={{position:"absolute",top:"6%",left:"5%"}}><img src="https://c.animaapp.com/1cGgrXG8/img/---icon--home-2--1@2x.png" alt="" width={(screenWidth*0.026)} /></div>
-            </Link>
-            <Link to={`/BookingPage2?id=${userId}`}>
+            </Link> */}
+            <Link to={`/BookingPage2?id=${info?.MemberID}`}>
             <div style={{position:"absolute",top:"6%",left:"10%"}}><img src="https://c.animaapp.com/iqEoUPux/img/group-2@2x.png" alt="" width={(screenWidth*0.026)} /></div>
             </Link>
       </div>

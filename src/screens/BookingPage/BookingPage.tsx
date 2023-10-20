@@ -9,7 +9,7 @@ import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form} 
 import type { RadioChangeEvent } from 'antd';
 import { AccommodationInterface, Hour_of_workInterface,ServiceInterface, MemberInterface } from "../../interfaces/IData";
 import { GetAccommodations, GetHour_of_works, CreateService, GetMemberById} from "../../services/http";
-import { useLocation,useNavigate, useParams } from "react-router-dom";
+import { useLocation,useNavigate} from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
 
 
@@ -17,7 +17,6 @@ import TextArea from "antd/es/input/TextArea";
 export const BookingPage = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
 

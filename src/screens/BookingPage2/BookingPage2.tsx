@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BackgoundWhite } from "../../components/BackgoundWhite";
 import { Buttonn } from "../../components/Button";
-// import { IconHome } from "../../components/IconHome";
 import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
 
@@ -26,7 +25,6 @@ export const BookingPage2 = (): JSX.Element => {
     let res = await GetServiceID();
     if (res) {
       setSid(res);
-      console.log(res);
     }
   };
 

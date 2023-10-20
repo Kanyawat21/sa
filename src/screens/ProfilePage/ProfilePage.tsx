@@ -1,13 +1,13 @@
 import React from "react";
 import { AccountTab } from "../../components/AccountTab";
-import { Buttonn } from "../../components/Button";
+
 import { IconHome } from "../../components/IconHome";
 import "./style.css";
 import { BackgoundWhite2 } from "../../components/BackgoundWhite/BackgoundWhite";
 import { useState, useEffect } from "react";
 import { UsersInterface } from "../../interfaces/IData";
 import { GetMemberById } from "../../services/http";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const ProfilePage = (): JSX.Element => {
   const location = useLocation();
@@ -55,7 +55,7 @@ export const ProfilePage = (): JSX.Element => {
           </div>
           <div className="text-wrapper-8">Profile</div>
          
-          <div className="text-wrapper-9">Edit profile picture</div>
+          
           <img
             className="icon-profile-circle"
             alt="Icon profile circle"

@@ -5,13 +5,13 @@ import { Buttonn } from "../../components/Button";
 import { IconHome } from "../../components/IconHome";
 import { StepBooking } from "../../components/StepBooking";
 import "./style.css";
-import { BackButton4 } from "../../components/BackButton/BackButton";
-import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form, Card } from 'antd';
+import { message, TimePicker, Select, DatePicker, DatePickerProps, Radio, Form} from 'antd';
 import type { RadioChangeEvent } from 'antd';
 import { AccommodationInterface, Hour_of_workInterface,ServiceInterface, MemberInterface } from "../../interfaces/IData";
 import { GetAccommodations, GetHour_of_works, CreateService, GetMemberById} from "../../services/http";
-import { Link,useLocation,useNavigate, useParams } from "react-router-dom";
+import { useLocation,useNavigate, useParams } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
+
 
 
 export const BookingPage = (): JSX.Element => {
@@ -48,8 +48,7 @@ export const BookingPage = (): JSX.Element => {
       Hour_of_workID: values.Hour_of_workID,
       Hour_of_work: values.Hour_of_work
     }
-    console.log(`${formatValues.PickTime}`);
-    console.log(`${formatValues.PickDate}`);
+    
     if (
       formatValues.PickDate === null || formatValues.PickDate === '' ||
       formatValues.PickTime === null || formatValues.PickTime === '' ||
@@ -60,7 +59,7 @@ export const BookingPage = (): JSX.Element => {
     else{
     let res = await CreateService(formatValues);
     if (res.status) {
-      //console.log(values);
+      console.log(formatValues);
       messageApi.open({
         type: "success",
         content: "Booking Successful",
@@ -74,16 +73,14 @@ export const BookingPage = (): JSX.Element => {
         content: "Sorry",
       });
     } }
-    console.log(values);
+    
   };
 
   const getMemberById = async () => {
     let res = await GetMemberById(Number(userId));
-    console.log(res)
     if (res) {
       setMember(res);
-
-    } console.log(res.Address);
+    } 
   }
 
   const getAccommodation = async () => {
@@ -104,9 +101,11 @@ export const BookingPage = (): JSX.Element => {
     getHourOfWork();
     getMemberById();
   }, []);
+
   const disabledDate: DatePickerProps['disabledDate'] = (current) => {
     return current && current < dayjs().subtract(1, 'day').endOf('day');
   };
+
 
  
   return (
@@ -133,7 +132,7 @@ export const BookingPage = (): JSX.Element => {
             overlapClassNameOverride="step-booking-3"
             overlapGroupClassName="step-booking-4" />
           {/*==============================================================*/}
-          {/*Add your code here nakaaaaaa */}
+          
           <Form
             name="basic"
             layout="vertical"
@@ -154,8 +153,8 @@ export const BookingPage = (): JSX.Element => {
                 onSelect={(value, option) => {
                   if (option) {
                     const price = option['data-price'];
-                    setSelectedAccommodationPrice(price); // อัปเดตค่า data-price ที่ถูกเลือกใน selectedAccommodationPrice
-                    console.log('Accommodation',price); // แสดงค่า data-price ในคอนโซล
+                    setSelectedAccommodationPrice(price);
+                    console.log('Accommodation:',price); // แสดงค่า data-price ในคอนโซล
                   }
                 }}
               >
@@ -165,15 +164,15 @@ export const BookingPage = (): JSX.Element => {
                 ))}
               </Select>
             </Form.Item>
-            <Form.Item name="Hour_of_workID" /*rules={[{ required: true, message: "Please select hour!", },]}*/>
+            <Form.Item name="Hour_of_workID">
               <Select allowClear
                 placeholder=" Please select the desired number of hours."
                 className="custom-selectAccommodation"
                 onSelect={(value, option) => {
                   if (option) {
                     const price = option['data-price'];
-                    setSelectedHour_of_workPrice(price); // อัปเดตค่า data-price ที่ถูกเลือกใน selectedAccommodationPrice
-                    console.log('Hour of work: ',price); // แสดงค่า data-price ในคอนโซล
+                    setSelectedHour_of_workPrice(price);
+                    console.log('Hour of work:',price); // แสดงค่า data-price ในคอนโซล
                   }
                 }}
               >
@@ -183,14 +182,15 @@ export const BookingPage = (): JSX.Element => {
               </Select>
             </Form.Item>
             <Form.Item label={<span className="text3">Date and Time of use</span>} style={{ marginBottom: 0,marginTop:40 }}>
-              <Form.Item name="PickDate" /*rules={[{ required: true, message: "Please select date!", },]}*/
+              <Form.Item name="PickDate" 
                 style={{ display: 'inline-block' }} >
                 <DatePicker className="custom-DatePicker" disabledDate={disabledDate}
                 ></DatePicker>
               </Form.Item>
-              <Form.Item name="PickTime" /*rules={[{ required: true, message: "Please select time!", },]}*/
+              <Form.Item name="PickTime" 
                 style={{ display: 'inline-block', margin: '0 8px' }}>
-                <TimePicker className="custom-TimePicker" format="HH:mm" ></TimePicker>
+                <TimePicker className="custom-TimePicker" format="HH:mm" 
+                ></TimePicker>
               </Form.Item >
             </Form.Item>
             <Form.Item label={<span className="text4">Dose your place have pets? (if yes, please specify)</span>} name="Has_pet"
@@ -208,7 +208,7 @@ export const BookingPage = (): JSX.Element => {
                   <TextArea showCount maxLength={100} className="Pet_detail_TextBox" />
                 </Form.Item>
               )}
-
+            
             <Form.Item>
              <Buttonn buttonTextClassName="button-2" className="button-instance" text="OK" />
             </Form.Item>   
@@ -221,14 +221,14 @@ export const BookingPage = (): JSX.Element => {
                 <br/><br/>
               <span style={{ fontSize: 18,fontFamily:"Inter, Helvetica" }}>Address</span><br/>
               <textarea className="textaddress" disabled value={member.map((member) => member.Address)}></textarea><br/>
-              <span style={{ fontSize: 18 ,fontFamily:"Inter, Helvetica"}}> Tel.</span><br/>
-              <textarea  disabled value={member.map((member) => member.Tel)}></textarea>
+              <span> Tel.</span><br/>
+              <textarea className="textaddress" style={{lineHeight:"45px"}} disabled value={member.map((member) => member.Tel)}></textarea>
             </Form>
           <span className="textService">Service Charge : </span>  
           <span className="textService1">{selectedAccommodationPrice + selectedHour_of_workPrice} Baht</span>
           {/*==============================================================*/}
           <div className="text-wrapper-9">Booking a service</div>
-          <IconHome className="icon-home-2" /> {/*Return to homepage2 */}
+          <IconHome className="icon-home-2" /> {/* Return to homepage2 */}
         </div>
       </div>
     </div>
@@ -243,9 +243,9 @@ function formatTime(inputDateString: string): string {
     return '';
 }
 
-  // แปลงเวลาไปยังโซนเวลา '+07:00'
+  
   const utcHours = inputDate.getUTCHours();
-  const localHours = utcHours + 7; // +07:00
+  const localHours = utcHours + 7;
 
   const formattedHours = (localHours < 24 ? localHours : localHours - 24).toString().padStart(2, '0');
   const formattedMinutes = inputDate.getUTCMinutes().toString().padStart(2, '0');

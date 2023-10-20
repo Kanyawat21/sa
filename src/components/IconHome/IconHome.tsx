@@ -15,7 +15,7 @@ export const IconHome = ({ className }: Props): JSX.Element => {
   const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-  console.log(id);
+  // console.log(id);
   const handleClick = () => {
     // Reset scrolling to the top of the page
     window.scrollTo(0, 0);

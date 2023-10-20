@@ -37,6 +37,8 @@ export interface ServiceInterface {
     Hour_of_work?: Hour_of_workInterface
    
     Price?: Float32Array
+
+    Maid?: string
     }
 
  export interface MemberInterface{

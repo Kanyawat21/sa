@@ -242,6 +242,29 @@ async function GetHour_of_works() {
     });
   return res;
 }
+async function ListServices(data: string | null) {
+  const requestOptions = {
+    method: "GET",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/services/${data}`, requestOptions)
+    .then((response) => response.json())
+
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
 
 async function GetService(data: string | null) {
   const requestOptions = {
@@ -252,7 +275,7 @@ async function GetService(data: string | null) {
     },
   };
 
-  let res = await fetch(`${apiUrl}/Members/${data}`, requestOptions)
+  let res = await fetch(`${apiUrl}/service/${data}`, requestOptions)
     .then((response) => response.json())
 
     .then((res) => {
@@ -280,5 +303,6 @@ export {
     GetAccommodations,
     GetService,
     GetUserName,
-    GetEmail
+    GetEmail,
+    ListServices
 };

@@ -36,7 +36,6 @@ export const ProfilePage2 = (): JSX.Element => {
           <div className="boxaddress">
             <textarea readOnly value={member.map((member) => member.Address)}></textarea>
           </div>
-          <div className="text-wrapper-9">Edit profile picture</div>
 
           <img
             className="icon-profile-circle"

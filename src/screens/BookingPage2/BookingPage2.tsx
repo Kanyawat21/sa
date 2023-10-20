@@ -77,7 +77,7 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="text-wrapper-6">{userData ? `${(userData as Service1Interface).Have_pet}` : 'N/A'}</div>
             <div className="text-wrapper-7">{userData ? `${(userData as Service1Interface).Accom_type}` : 'N/A'}</div>
             <div className="text-wrapper-8">{userData ? `${(userData as Service1Interface).HHour}` : 'N/A'}</div>
-            <div className="text-wrapper-9">{userData ? `${(userData as Service1Interface).Date}` : 'N/A'}</div>
+            <div className="text-wrapper-9">{userData ? `${((userData as Service1Interface).Date || 'N/A').substring(0, 10)}` : 'N/A'}</div>
             <div className="text-wrapper-10">{userData ? `${(userData as Service1Interface).Location}` : 'N/A'}</div>
             <div className="text-wrapper-13">Maid:</div>
             <div className="text-wrapper-14">{userData ? `${(userData as Service1Interface).M_firstname} ${(userData as Service1Interface).M_lastname}`: 'N/A'}</div>

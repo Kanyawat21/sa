@@ -17,7 +17,6 @@ export const BookingPage2 = (): JSX.Element => {
   const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-
   const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
@@ -50,6 +49,7 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
+      
         
       } else {
         throw new Error('User not found');

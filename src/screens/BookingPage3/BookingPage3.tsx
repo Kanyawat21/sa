@@ -174,7 +174,7 @@ export const BookingPage3 : React.FC = () => {
                                                               fontWeight:700}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
                                                               >Finish</Button>
             </Form.Item>
-            <Checkbox style={{position:"absolute",left:(screenWidth*0.6) , top:(screenHeight*0.87),fontSize:(screenWidth*0.015)}} onChange={Check}>Pay by cash</Checkbox>
+            <Checkbox style={{position:"absolute",left:(screenWidth*0.67) , top:(screenHeight*0.87),fontSize:(screenWidth*0.015)}} onChange={Check}>Pay by cash</Checkbox>
           </Form>
           {/* // แสดงเงินที่ต้องจ่าย */}
             <div style={{width:"50%",position:"absolute",left:"43%",top:(screenHeight*0.77),fontSize:(screenWidth*0.0183),color:"#3F93FE",fontWeight:"700"}}> Total : {info?.ServicePrice} Baht</div>

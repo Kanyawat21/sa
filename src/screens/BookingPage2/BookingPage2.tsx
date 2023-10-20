@@ -10,14 +10,13 @@ import { Service1Interface } from "../../interfaces/IData";
 import { GetService } from "../../services/http";
 import { RealServiceInterface } from "../../interfaces/ball/IBP3";
 import { GetServiceID } from "../../services/http/ball";
-const apiUrl = "http://localhost:8080";
+
 
 export const BookingPage2 = (): JSX.Element => {
   const location = useLocation();
-  const id = location.state?.id;;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-  const idAsString = userId ? userId.toString() : "";
+  //const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
   
@@ -32,17 +31,18 @@ export const BookingPage2 = (): JSX.Element => {
   };
 
 
-  useEffect(() => {
-    getServiceID();
-    console.log(sid)
-  },[]);
+  // useEffect(() => {
+  //   getServiceID();
+  //   console.log(sid)
+  // },[sid]);
   
   useEffect(() => {
+    getServiceID();
     if (userId) {
       // Fetch user data based on the userId
-      fetchUserData(idAsString);
+      fetchUserData(userId);
     }
-  }, [userId]);
+  },[userId]);
 
   const fetchUserData = async (idAsString: string) => {
     try {

@@ -109,7 +109,6 @@ export const BookingPage3 : React.FC = () => {
   }
 
   return (
-    
     // พื้นหลัง
     <div className="page"style={{backgroundColor:"#8CC8FF",position:"absolute", width:"100%", height:"100%"}}>
       <div style={{backgroundColor:"#FFFFFF",position:"absolute", top:"15%",width:"100%", height:"85%",borderRadius:"5% 5% 0 0",}}/>

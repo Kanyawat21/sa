@@ -13,10 +13,9 @@ import { GetServiceID } from "../../services/http/ball";
 
 export const BookingPage2 = (): JSX.Element => {
   const location = useLocation();
-  // const id = location.state?.id;
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-  const idAsString = userId ? userId.toString() : "";
+  //const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
   
@@ -30,14 +29,18 @@ export const BookingPage2 = (): JSX.Element => {
   };
 
 
-  useEffect(() => {
-    getServiceID();
-  },[]);
+  // useEffect(() => {
+  //   getServiceID();
+  //   console.log(sid)
+  // },[sid]);
   
   useEffect(() => {
+    getServiceID();
     if (userId) {
-      fetchUserData(idAsString);
-    } }, [userId]);
+      // Fetch user data based on the userId
+      fetchUserData(userId);
+    }
+  },[userId]);
 
   const fetchUserData = async (idAsString: string) => {
     try {

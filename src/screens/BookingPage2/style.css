@@ -377,13 +377,28 @@
 .contact{
   color: #ff0000;
   font-family: "Inter", Helvetica;
-  font-size: 20px;
+  font-size: 16px;
   height: 24px;
-  left: 560px;
+  left: 660px;
   letter-spacing: 2px;
   line-height: normal;
   position: absolute;
   text-align: right;
-  top: 785px;
+  top: 800px;
   white-space: nowrap;
+}
+
+.mail{
+  color: #ffffff;
+  font-family: "Inter", Helvetica;
+  font-size: 16px;
+  font-weight: 200;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 95.8%;
+  background-color: #76caf79d;
+  height: 2.5%;
+  padding-top: 15px;
+  letter-spacing: 5px;
 }

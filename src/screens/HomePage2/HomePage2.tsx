@@ -100,7 +100,7 @@ export const HomePage2 = (): JSX.Element => {
           <Link to={`/ReportPage?id=${userId}`}>
             <Buttonn buttonTextClassName="button-instance" className="report-button" text="Report an issue" />
           </Link>
-          <div className="mailja"> koratmaid@gmail.com </div>
+          <div className="mailja"> koratmaid@gmail.com | 088-557-6188 | @line:maidkorat</div>
       </div>
     </div>
   );

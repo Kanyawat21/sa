@@ -106,8 +106,8 @@ export const BookingPage2 = (): JSX.Element => {
                 !== '-' ? `${(userData as Service1Interface).Detail}` : ''}
             </div>
             <div className="contact">if you would like to edit your booking, please contact us
-              <br/>contact : koratmaid@gmail.com
             </div>
+            <div className="mail">koratmaid@gmail.com | 088-557-6188 | @line:maidkorat</div>
             
 
             
@@ -115,7 +115,7 @@ export const BookingPage2 = (): JSX.Element => {
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />
             </Link>
             <div className="text-wrapper-11">Booking a service</div>
-            {/* <IconHome className="icon-home-2" /> */}
+            
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ import "./style.css";
 import { Link, useLocation } from "react-router-dom";
 import { Service1Interface } from "../../interfaces/IData";
 import { GetService } from "../../services/http";
+import { RealServiceInterface } from "../../interfaces/ball/IBP3";
+import { GetServiceID } from "../../services/http/ball";
 const apiUrl = "http://localhost:8080";
 
 export const BookingPage2 = (): JSX.Element => {
@@ -18,8 +20,23 @@ export const BookingPage2 = (): JSX.Element => {
   const idAsString = userId ? userId.toString() : "";
 
   const [userData, setUserData] = useState(null);
+  
+  const [sid, setSid] = useState<RealServiceInterface>();
  
+  const getServiceID = async () => {
+    let res = await GetServiceID();
+    if (res) {
+      setSid(res);
+      console.log(res);
+    }
+  };
 
+
+  useEffect(() => {
+    getServiceID();
+    console.log(sid)
+  },[]);
+  
   useEffect(() => {
     if (userId) {
       // Fetch user data based on the userId
@@ -91,9 +108,10 @@ export const BookingPage2 = (): JSX.Element => {
             <div className="contact">if you would like to edit your booking, please contact us
               <br/>contact : koratmaid@gmail.com
             </div>
+            
 
             
-            <Link to={`/BookingPage3?id=${(userId)}`}>
+            <Link to={`/BookingPage3?id=${sid?.ID}`}>
                 <Buttonn buttonTextClassName="button-2" className="button-instance" text="Next" />
             </Link>
             <div className="text-wrapper-11">Booking a service</div>

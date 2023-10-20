@@ -324,7 +324,7 @@ func ListServices(c *gin.Context) {
 	var services []entity.Service
 	if err := entity.DB().
 		Preload("Maid").
-		Where("id = ?", id).
+		Where("member_id = ?", id).
 		Order("id desc").
 		Find(&services).Error; err != nil {
 

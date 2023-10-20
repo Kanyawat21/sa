@@ -1,10 +1,11 @@
 import React,{ useState, useEffect } from 'react';
 import qrcode from '../../image/qrcode.jpg'
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { message, Upload,Button,Form} from 'antd';
+import { message, Upload,Button,Form, Checkbox} from 'antd';
 import { UploadOutlined } from "@ant-design/icons";
 import * as Interface from '../../interfaces/ball/IBP3';
 import * as http from "../../services/http/ball";
+import { CheckboxChangeEvent } from 'antd/es/checkbox';
 
 
 
@@ -100,6 +101,12 @@ export const BookingPage3 : React.FC = () => {
     };
   }, []);
   
+  function Check ( e: CheckboxChangeEvent){
+    const c = e.target.checked;
+    console.log(c);
+    (c)? setImage('cash'):setImage("");
+    console.log(image);
+  }
 
   return (
     
@@ -167,6 +174,7 @@ export const BookingPage3 : React.FC = () => {
                                                               fontWeight:700}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
                                                               >Finish</Button>
             </Form.Item>
+            <Checkbox style={{position:"absolute",left:(screenWidth*0.6) , top:(screenHeight*0.87),fontSize:(screenWidth*0.015)}} onChange={Check}>Pay by cash</Checkbox>
           </Form>
           {/* // แสดงเงินที่ต้องจ่าย */}
             <div style={{width:"50%",position:"absolute",left:"43%",top:(screenHeight*0.77),fontSize:(screenWidth*0.0183),color:"#3F93FE",fontWeight:"700"}}> Total : {info?.ServicePrice} Baht</div>

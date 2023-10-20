@@ -47,9 +47,7 @@ export const HomePage = (): JSX.Element => {
             
             <Link to="/LoginPage"><div className="div-1">Login</div></Link>
             
-            <div className="text-wrapper-4">Price</div>
-            <div className="text-wrapper-5">About Us</div>
-            <div className="text-wrapper-6">Contact Us</div>
+         
             <MaidLogoText className="maid-logo-text-instance" />
           </div>
         </div>

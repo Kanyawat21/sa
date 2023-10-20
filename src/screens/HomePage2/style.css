@@ -33,6 +33,7 @@
 .home-page2 .maid-logo-text-instance {
   position: absolute !important;
   top: 0 !important;
+  left: 3%;
 }
 
 .home-page2 .price {
@@ -311,6 +312,21 @@
 textarea{
   resize: none;
   border-color: #ffffff;
+}
+
+.mailja{
+  color: #ffffff;
+  font-family: "Inter", Helvetica;
+  font-size: 16px;
+  font-weight: 200;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 93%;
+  background-color: #76caf79d;
+  height: 6%;
+  padding-top: 1.5%;
+  letter-spacing: 10px;
 }
 
 

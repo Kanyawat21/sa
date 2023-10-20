@@ -36,10 +36,8 @@ export const HomePage2 = (): JSX.Element => {
         <div className="overlap-group"> 
           <MainTab className="main-tab-instance" />
           <MaidLogoText className="maid-logo-text-instance" />
-          <div className="price">Price</div>
+    
           <div className="username"><textarea disabled value={member.map((member) => member.UserName)}></textarea></div>
-          <div className="aboutus">About Us</div>
-          <div className="contactus">Contact Us</div>
           <IconProfileCircle className="icon-profile-circle-instance" onClick={handleIconClick}/>
           {isDropVisible && (
             <div className="drop">
@@ -102,6 +100,7 @@ export const HomePage2 = (): JSX.Element => {
           <Link to={`/ReportPage?id=${userId}`}>
             <Buttonn buttonTextClassName="button-instance" className="report-button" text="Report an issue" />
           </Link>
+          <div className="mailja"> koratmaid@gmail.com </div>
       </div>
     </div>
   );

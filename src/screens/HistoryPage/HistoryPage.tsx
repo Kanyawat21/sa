@@ -59,8 +59,6 @@ export const HistoryPage = (): JSX.Element => {
             <Card className='show'>
                 <Table columns={columns} dataSource={history} pagination={{ pageSize: 5 }}/>
               </Card>
-     
-            
             <div className="text-wrapper-9">Booking history</div>
             <IconHome className="icon-home-2" />
         </div>

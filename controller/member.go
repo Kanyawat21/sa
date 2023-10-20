@@ -209,7 +209,13 @@ func CreateService(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"data": u})
 }
 		
-
+		type CombinedData struct {
+			Service entity.Service
+			Member  entity.Member
+			Accom   entity.Accomodation
+			Maid	  entity.Maid
+			Hour 	  entity.Hour_of_work
+		  }
 		  
 func GetService(c *gin.Context) {
 			type CombinedData struct {
@@ -318,7 +324,7 @@ func ListServices(c *gin.Context) {
 	var services []entity.Service
 	if err := entity.DB().
 		Preload("Maid").
-		Where("id = ?", id).
+		Where("member_id = ?", id).
 		Order("id desc").
 		Find(&services).Error; err != nil {
 

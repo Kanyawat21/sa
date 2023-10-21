@@ -15,8 +15,6 @@ export const BookingPage2 = (): JSX.Element => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const userId = params.get('id');
-  // const idAsString = userId ? userId.toString() : "";
-
   const [userData, setUserData] = useState(null);
   
   const [sid, setSid] = useState<RealServiceInterface>();
@@ -29,18 +27,12 @@ export const BookingPage2 = (): JSX.Element => {
   };
 
 
-  // useEffect(() => {
-  //   getServiceID();
-  //   console.log(sid)
-  // },[]);
   
   useEffect(() => {
     getServiceID()
     if (userId) {
-      // Fetch user data based on the userId
       fetchUserData(userId);
     }
-    console.log(sid)
   },[]);
 
   const fetchUserData = async (idAsString: string) => {
@@ -48,7 +40,6 @@ export const BookingPage2 = (): JSX.Element => {
       const response = await GetService(idAsString);
       if (response) {
         setUserData(response);
-        console.log(response)
         
       } else {
         throw new Error('User not found');

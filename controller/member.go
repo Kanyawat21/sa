@@ -3,9 +3,9 @@ package controller
 import (
 	"fmt"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/n6teen/reactbasic/entity"
+	"time"
 )
 
 
@@ -178,6 +178,20 @@ func CreateService(c *gin.Context) {
 				return
 			}
 			
+			bangkokLoc, err := time.LoadLocation("Asia/Bangkok")
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+			
+			pickDateStr := service.PickDate
+			pickDate, err := time.Parse("2006-01-02", pickDateStr)
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+			pickDate = pickDate.In(bangkokLoc)
+			
 			u := entity.Service{
 				Member: member,
 				Accomodation: accommodation,
@@ -185,7 +199,7 @@ func CreateService(c *gin.Context) {
 				Maid: maid,
 				Has_pet:    service.Has_pet,         
 				Pet_detail: service.Pet_detail,
-				PickDate: service.PickDate,
+				PickDate: pickDate.Format("2006-01-02 15:04:05.9999999-07:00"),
 				PickTime: service.PickTime,
 				Price: float32(accommodation.Price+hour_of_work.Price),
 			}
